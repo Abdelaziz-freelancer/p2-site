@@ -1,9 +1,6 @@
 -- =====================================================
--- المشروع رقم 2 ميديا باير: Abdelaziz Tamer
--- شغّل الملف ده كله مرة واحدة في Supabase > SQL Editor > Run
+-- المشروع رقم 2 ميديا باير: Abdelaziz Tamer (النسخة 2)
 -- =====================================================
-
--- المواعيد المتاحة (انت اللي بتضيفها من الداشبورد)
 create table if not exists p2_slots (
   id uuid primary key default gen_random_uuid(),
   starts_at timestamptz not null unique,
@@ -11,7 +8,6 @@ create table if not exists p2_slots (
   created_at timestamptz not null default now()
 );
 
--- الحجوزات
 create table if not exists p2_bookings (
   id uuid primary key default gen_random_uuid(),
   slot_id uuid unique references p2_slots(id) on delete restrict,
@@ -25,7 +21,6 @@ create table if not exists p2_bookings (
   created_at timestamptz not null default now()
 );
 
--- البريفات
 create table if not exists p2_briefs (
   id uuid primary key default gen_random_uuid(),
   client_name text,
@@ -37,30 +32,40 @@ create table if not exists p2_briefs (
   constraint p2_briefs_size check (pg_column_size(answers) < 200000)
 );
 
--- إعدادات الموقع (سرعة الشرايط، سرعة لوجو ميتا، واتساب، لينكات)
 create table if not exists p2_settings (
   key text primary key,
   value jsonb not null default '{}'::jsonb
 );
-insert into p2_settings (key, value)
-values ('site', '{"marquee_speed":1,"logo_speed":1,"whatsapp":"201041249535"}')
+
+create table if not exists p2_admins (
+  id uuid primary key default gen_random_uuid(),
+  username text not null unique,
+  name text not null default '',
+  password_hash text not null,
+  permissions jsonb not null default '{}'::jsonb,
+  is_active boolean not null default true,
+  created_at timestamptz not null default now(),
+  last_login timestamptz
+);
+
+insert into p2_settings (key, value) values
+  ('site', '{"lang":"en","theme":"light","whatsapp":"201041249535","wa_show":true,"marquee_speed":1,"logo_speed":1}'),
+  ('content', '{}')
 on conflict (key) do nothing;
 
--- الأمان: كل الجداول مقفولة على الزوار، والداشبورد بتدخل بمفتاح السيرفر
 alter table p2_slots enable row level security;
 alter table p2_bookings enable row level security;
 alter table p2_briefs enable row level security;
 alter table p2_settings enable row level security;
+alter table p2_admins enable row level security;
 
--- الزائر يقدر: يقرا إعدادات الموقع، ويبعت بريف (ما يقراش بريفات)
 drop policy if exists p2_settings_read on p2_settings;
-create policy p2_settings_read on p2_settings for select to anon using (key = 'site');
+create policy p2_settings_read on p2_settings for select to anon using (key in ('site','content','brief'));
 drop policy if exists p2_briefs_insert on p2_briefs;
 create policy p2_briefs_insert on p2_briefs for insert to anon with check (is_read = false);
 grant select on p2_settings to anon;
 grant insert on p2_briefs to anon;
 
--- المواعيد الفاضية فقط (مستقبلية وغير محجوزة)
 create or replace view p2_open_slots as
   select s.id, s.starts_at, s.duration_min
   from p2_slots s
@@ -68,10 +73,9 @@ create or replace view p2_open_slots as
     and not exists (select 1 from p2_bookings b where b.slot_id = s.id);
 grant select on p2_open_slots to anon;
 
--- الحجز: دالة آمنة بتمنع الحجز المزدوج
 create or replace function p2_book_slot(p_slot uuid, p_name text, p_phone text, p_activity text)
 returns json language plpgsql security definer set search_path = public as $$
-declare s p2_slots;
+declare s p2_slots; bid uuid;
 begin
   if length(trim(coalesce(p_name,''))) not between 2 and 100
      or length(trim(coalesce(p_phone,''))) not between 8 and 30
@@ -86,8 +90,15 @@ begin
     return json_build_object('ok', false, 'error', 'slot_taken');
   end if;
   insert into p2_bookings (slot_id, slot_starts_at, duration_min, name, phone, activity)
-  values (s.id, s.starts_at, s.duration_min, trim(p_name), trim(p_phone), trim(p_activity));
-  return json_build_object('ok', true);
+  values (s.id, s.starts_at, s.duration_min, trim(p_name), trim(p_phone), trim(p_activity))
+  returning id into bid;
+  return json_build_object('ok', true, 'id', bid);
 end $$;
 revoke all on function p2_book_slot(uuid, text, text, text) from public;
 grant execute on function p2_book_slot(uuid, text, text, text) to anon;
+
+-- STORAGE: bucket للصور والخطوط (قراءة عامة، الرفع من الداشبورد بس)
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('p2-assets', 'p2-assets', true, 5242880,
+  array['image/png','image/jpeg','image/webp','image/gif','font/woff2','font/woff','font/ttf','font/otf'])
+on conflict (id) do update set public = true, file_size_limit = 5242880;
