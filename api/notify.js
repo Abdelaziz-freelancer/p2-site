@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
   if (!['booking', 'brief'].includes(type) || !UUID.test(id || '')) return res.status(400).json({ ok: false });
   if (!SUPABASE_URL || !KEY) return res.status(500).json({ ok: false, error: 'missing env' });
 
-  const H = { apikey: KEY, Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' };
+  const H = { apikey: KEY, ...(KEY.startsWith('sb_') ? {} : { Authorization: 'Bearer ' + KEY }), 'Content-Type': 'application/json' };
   const table = type === 'booking' ? 'p2_bookings' : 'p2_briefs';
   const since = new Date(Date.now() - 15 * 60 * 1000).toISOString();
   try {

@@ -1,6 +1,5 @@
-// عدّل السطرين دول بعد ما تعمل مشروع Supabase (خطوة 2 في ملف الخطوات)
-// ⚠️ هنا بنحط الـ anon key بس (مش service_role)
+// بيانات الربط بـ Supabase (الـ Publishable key عام وآمن، مش سري)
 window.P2_CONFIG = {
-  url: "https://XXXXXXXX.supabase.co",
-  key: "PASTE_ANON_KEY_HERE"
+  url: "https://fuarxilbtlxkohtommvd.supabase.co",
+  key: "sb_publishable_IiJ9YwWxZWjncadiVRasdg_d-G6fU5f"
 };
