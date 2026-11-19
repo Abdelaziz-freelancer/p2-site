@@ -1,5 +1,6 @@
 // يبعت إشعار تليجرام لما حد يحجز ميتينج أو يبعت بريف.
 // بيتأكد إن الحجز/البريف موجود فعلاً في قاعدة البيانات وإنه ماتبعتش قبل كده.
+const sendPush = require('./_push');
 const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -30,13 +31,22 @@ module.exports = async (req, res) => {
     } else {
       text = `📝 <b>بريف جديد وصل</b>\n\n👤 ${esc(row.client_name)}\n🏷 ${esc(row.brand_name)}\n📞 ${esc(row.phone)}` + (DASHBOARD_URL ? `\n\n🔗 ${esc(DASHBOARD_URL.replace(/\/$/, ''))}` : '');
     }
+    const title = type === 'booking' ? '📅 حجز ميتينج جديد' : '📝 بريف جديد';
+    const body = type === 'booking' ? `${row.name} — ${row.activity}` : `${row.brand_name || row.client_name || ''}`;
+    let tgOk = false, tgTried = false;
     if (TG && CHAT) {
-      const r = await fetch(`https://api.telegram.org/bot${TG}/sendMessage`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: CHAT, text, parse_mode: 'HTML', disable_web_page_preview: true })
-      });
-      if (!r.ok) throw new Error('telegram ' + r.status);
+      tgTried = true;
+      try {
+        const r = await fetch(`https://api.telegram.org/bot${TG}/sendMessage`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT, text, parse_mode: 'HTML', disable_web_page_preview: true })
+        });
+        tgOk = r.ok;
+      } catch (e) {}
     }
+    let pushed = 0;
+    try { pushed = (await sendPush({ title, body, url: DASHBOARD_URL || '/' })).sent || 0; } catch (e) {}
+    if (tgTried && !tgOk && !pushed) throw new Error('notify failed');
     return res.status(200).json({ ok: true });
   } catch (e) {
     // لو التليجرام فشل نرجّع الإشعار "غير مرسل" عشان يتحاول تاني

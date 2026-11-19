@@ -6,8 +6,9 @@
 <title>Abdelaziz Tamer | Media Buyer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/logo.png">
 <style>
-:root{--bg:#000;--fg:#fff;--mute:#9a9a9a;--line:#222;--card:#0c0c0c;--glow:#2a2a2a;--ms:linear-gradient(120deg,#cfcfcf,#fff 55%,#bdbdbd);--mx:#000;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{--fhe:Anton,Impact,"Arial Narrow",sans-serif;--fbe:Inter,system-ui,sans-serif;--fha:Cairo,sans-serif;--fba:Cairo,Inter,sans-serif;--bg:#000;--fg:#fff;--mute:#9a9a9a;--line:#222;--card:#0c0c0c;--glow:#2a2a2a;--ms:linear-gradient(120deg,#cfcfcf,#fff 55%,#bdbdbd);--mx:#000;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
 :root[data-t=light]{--bg:#fff;--fg:#000;--mute:#555;--line:#ddd;--card:#f4f4f4;--glow:#e2e2e2;--ms:linear-gradient(120deg,#000,#333 55%,#000);--mx:#fff}
 :root[data-t=light] #ld img,:root:not([data-t=light]) nav img{filter:invert(1) hue-rotate(180deg)}
@@ -15,17 +16,17 @@ html{scroll-behavior:smooth;scroll-padding-top:70px}
 :root:not([data-t=light]) nav{--bg:#fff;--fg:#000;--line:#ddd}
 
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font:400 16px/1.6 Inter,system-ui,sans-serif;overflow-x:hidden}
-html[lang=ar] body{font-family:Cairo,Inter,sans-serif}
+body{background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--fbe);overflow-x:hidden}
+html[lang=ar] body{font-family:var(--fba)}
 html[lang=en] [data-l=ar],html[lang=ar] [data-l=en]{display:none!important}
-h1,h2,h3,.big{font-family:Anton,Impact,'Arial Narrow',sans-serif;font-weight:400;text-transform:uppercase;line-height:1}
-html[lang=ar] h2,html[lang=ar] h3{font-family:Cairo,sans-serif;font-weight:800;text-transform:none;line-height:1.3}
+h1,h2,h3,.big{font-family:var(--fhe);font-weight:400;text-transform:uppercase;line-height:1}
+html[lang=ar] h2,html[lang=ar] h3{font-family:var(--fha);font-weight:800;text-transform:none;line-height:1.3}
 nav{position:fixed;inset:calc(12px + env(safe-area-inset-top,0px)) 3vw auto;z-index:50;border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:8px 22px;background:color-mix(in srgb,var(--bg) 78%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid var(--line)}
 nav img{height:44px;display:block}
 nav .links{display:flex;gap:28px;font-weight:500;font-size:15px}
 nav a{color:var(--fg);text-decoration:none}
 .tools{display:flex;gap:10px}
-.pill{background:var(--fg);color:var(--bg);border:0;border-radius:99px;padding:8px 16px;font:600 13px Inter,sans-serif;cursor:pointer}
+.pill{background:var(--fg);color:var(--bg);border:0;border-radius:99px;padding:8px 16px;font:600 13px var(--fbe);cursor:pointer}
 section{padding:110px 6vw;max-width:1300px;margin:auto;position:relative}
 .tag{color:var(--mute);letter-spacing:.2em;font-size:12px;text-transform:uppercase;margin-bottom:18px;display:block}
 h2{font-size:clamp(34px,5.4vw,76px);margin-bottom:24px;max-width:15ch}
@@ -41,16 +42,16 @@ p.lead{color:var(--mute);max-width:60ch;font-size:18px}
 .hero .row{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:0 5vw 5vh;flex-wrap:wrap}
 .hero .row>div{max-width:min(340px,30vw)}
 .hero h1{font-size:clamp(22px,2.4vw,34px);margin-bottom:10px}
-html[lang=ar] .hero h1{font-family:Cairo;font-weight:800;line-height:1.35}
+html[lang=ar] .hero h1{font-family:var(--fha);font-weight:800;line-height:1.35}
 .hero small{color:var(--fg);font-size:14px;display:block;margin-bottom:12px}
 .hero .r{text-align:end;font-weight:600}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:40px}
 .card{background:var(--bg);padding:30px 26px;transition:.25s}
 .card:hover{background:var(--card)}
-.card .n{font-family:Anton;color:var(--mute);font-size:14px;display:block;margin-bottom:34px}
+.card .n{font-family:var(--fhe);color:var(--mute);font-size:14px;display:block;margin-bottom:34px}
 .card h3{font-size:24px;margin-bottom:10px}
 .card p{color:var(--mute);font-size:15px}
-.metric{font-family:Anton;font-size:clamp(34px,4vw,56px);display:block;margin-bottom:6px}
+.metric{font-family:var(--fhe);font-size:clamp(34px,4vw,56px);display:block;margin-bottom:6px}
 .brands{max-width:none;text-align:center;overflow:hidden}
 .brands h2,.brands p{margin-inline:auto}
 .meta{width:min(80vw,1400px);margin-inline:auto;aspect-ratio:300/215;margin-top:30px;margin-bottom:10px;background:var(--ms);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-around;direction:ltr;--m:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 165'%3E%3Cpath d='M30 82C30 14 100 6 150 82S270 150 270 82C270 14 200 6 150 82S30 150 30 82' fill='none' stroke='%23000' stroke-width='58' stroke-linecap='round'/%3E%3C/svg%3E");-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
@@ -73,7 +74,7 @@ html[lang=ar] .hero h1{font-family:Cairo;font-weight:800;line-height:1.35}
 .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
 .split>div{background:var(--bg);padding:40px 30px}
 footer{background:var(--bg);border-top:1px solid var(--line);padding:50px 6vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;color:var(--fg)}
-footer b{color:var(--fg);font-family:Anton;font-size:22px;display:block}
+footer b{color:var(--fg);font-family:var(--fhe);font-size:22px;display:block}
 :root[data-t=light] footer{--bg:#000;--fg:#fff;--line:#333}
 :root:not([data-t=light]) footer{--bg:#fff;--fg:#000;--line:#ddd}
 .rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.in{opacity:1;transform:none}
@@ -87,11 +88,11 @@ footer b{color:var(--fg);font-family:Anton;font-size:22px;display:block}
 .case{display:block;text-decoration:none;color:var(--fg);border:1px solid var(--line);transition:.3s;overflow:hidden}
 .case:hover{transform:translateY(-6px);border-color:var(--fg)}
 .case .ph{aspect-ratio:4/3;border:0;border-bottom:1px solid var(--line);transition:.4s}.case:hover .ph{filter:brightness(1.3)}
-.ci{padding:22px}.ci h3{font-size:22px;margin:8px 0 12px}.rs{font-family:Anton,sans-serif;font-size:clamp(34px,4vw,52px);line-height:1}.ci .v{display:block;margin-top:16px;font-weight:600;font-size:14px}
+.ci{padding:22px}.ci h3{font-size:22px;margin:8px 0 12px}.rs{font-family:var(--fhe);font-size:clamp(34px,4vw,52px);line-height:1}.ci .v{display:block;margin-top:16px;font-weight:600;font-size:14px}
 .tm .ph{width:320px;flex:none}
 .cs{position:fixed;inset:0;z-index:70;background:var(--bg);overflow:auto;display:none}.cs.on{display:block}.csi{max-width:1000px;margin:auto;padding:90px 6vw}
 .csi .ph{aspect-ratio:16/9;margin:30px 0}.csi h2{max-width:none}
-.step{border-top:1px solid var(--line);padding:22px 0;display:grid;grid-template-columns:60px 1fr;gap:14px}.step b{font-family:Anton;color:var(--mute)}.step p{color:var(--mute)}
+.step{border-top:1px solid var(--line);padding:22px 0;display:grid;grid-template-columns:60px 1fr;gap:14px}.step b{font-family:var(--fhe);color:var(--mute)}.step p{color:var(--mute)}
 .tm .tr{animation-duration:calc(40s/var(--mq,1))}.tm .tr:nth-child(2){animation-duration:calc(46s/var(--mq,1))}
 .fl{margin:24px 0}.fl>b{display:block;margin-bottom:8px;font-weight:600}.fl small{color:var(--mute);display:block;margin:-4px 0 8px}.rq{color:#e5484d;font-size:12px;margin-inline-start:8px;font-weight:400}
 .csi input[type=text],.csi input[type=tel],.csi input[type=email],.csi textarea,.csi select{width:100%;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit}
@@ -99,7 +100,7 @@ footer b{color:var(--fg);font-family:Anton;font-size:22px;display:block}
 .op{display:flex;flex-wrap:wrap;gap:8px}.op label{border:1px solid var(--line);border-radius:99px;padding:8px 16px;cursor:pointer;display:flex;gap:8px;align-items:center}.op label:has(input:checked){background:var(--fg);color:var(--bg)}
 .gr{display:grid;gap:8px;align-items:center}
 .sec{margin-top:54px;border-top:1px solid var(--line);padding-top:26px}.sec h3{font-size:28px}.sec>p{color:var(--mute)}
-.slot{border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:99px;padding:10px 18px;font:600 14px Inter,Cairo,sans-serif;cursor:pointer;margin:0 8px 8px 0}.slot.on,.slot:hover{background:var(--fg);color:var(--bg)}
+.slot{border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:99px;padding:10px 18px;font:600 14px var(--fbe);cursor:pointer;margin:0 8px 8px 0}.slot.on,.slot:hover{background:var(--fg);color:var(--bg)}
 .er{color:#e5484d;margin:12px 0}.opt{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:26px 0 10px}.oc{display:block;border:1px solid var(--line);border-radius:18px;padding:24px;text-decoration:none;color:var(--fg);transition:.25s}.oc:hover{border-color:var(--fg);transform:translateY(-3px)}.oc b{display:block;font-size:20px;margin-bottom:6px}.oc span{color:var(--mute);font-size:15px}.csi h3.dd{font-size:22px;margin:26px 0 12px}
 .cs:has(.bfw){background:#fff}
 .bfw{color:#1a1a2e;--fg:#1a1a2e;--bg:#fff;--line:#dfe2ec;--mute:#6b7186}
@@ -109,136 +110,134 @@ footer b{color:var(--fg);font-family:Anton;font-size:22px;display:block}
 .bfw .rq{background:#fdecee;color:#e63757;border-radius:6px;padding:2px 8px}
 .bfw .sec{border-top:0;padding-top:0;margin-top:46px}
 .sh{display:flex;gap:14px;align-items:center;padding-bottom:16px;border-bottom:2px solid #e5e7ee;margin-bottom:18px}
-.nb{width:44px;height:44px;flex:none;border-radius:12px;background:#1a1a2e;color:#fff;display:grid;place-items:center;font:800 18px Cairo,sans-serif}
+.nb{width:44px;height:44px;flex:none;border-radius:12px;background:#1a1a2e;color:#fff;display:grid;place-items:center;font:800 18px var(--fba)}
 .sh h3{font-size:24px;margin:0}.sh p{margin:0;color:#6b7186;font-size:14px}
 .nt{border-radius:12px;padding:16px 18px;margin:14px 0;border-inline-start:4px solid;font-size:15px;line-height:1.9}
 .nt.pk{background:#fff1f2;border-color:#ef476f}.nt.am{background:#fff8e5;border-color:#f5a623}
 .bfw .btn.fill{background:linear-gradient(135deg,#1a1a2e,#0f3460);color:#fff;border:0}
 .bfw .btn{border-color:#1a1a2e;color:#1a1a2e}.bfw .btn.fill{color:#fff}
-.rtlx{direction:rtl;font-family:Cairo,Inter,sans-serif}.rtlx h2,.rtlx h3{font-family:Cairo,sans-serif;font-weight:800;text-transform:none;line-height:1.35}
+.rtlx{direction:rtl;font-family:var(--fba)}.rtlx h2,.rtlx h3{font-family:var(--fha);font-weight:800;text-transform:none;line-height:1.35}
 @media(max-width:760px){.meta{width:96vw;margin-inline:0;margin-left:calc(50% - 48vw);margin-right:calc(50% - 48vw)}#th{font-size:24px;line-height:1;min-width:46px;padding:7px 12px}.hero .big{overflow:visible}.csi{padding:80px 5vw}.tm .ph{width:240px}.tm q{width:260px}.fl>b{font-size:15px}.gr{grid-template-columns:1fr!important}.gr>span{font-weight:600}.btn{padding:13px 22px}}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}.tm .ph.sh,.ph.sh{aspect-ratio:auto;background:none;border:0;display:block}.ph.sh img{height:auto;max-height:440px;object-fit:contain;border:1px solid var(--line)}.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:26px 0}.gal img,.sim{width:100%;height:auto;display:block;border:1px solid var(--line);margin-top:12px}.csi .ph:has(img){aspect-ratio:auto}#soc .btn{margin-inline-end:0}
 </style>
 </head>
 <body><div id="ld"><img src="assets/logo.png" alt=""></div><div id="glow"></div><div id="cur"></div>
 <nav>
 <img src="assets/logo.png" alt="Abdelaziz Tamer Media Buyer">
-<div class="links" id="lk"><a href="#home"><span data-l="en">Home</span><span data-l="ar">الرئيسية</span></a><a href="#about"><span data-l="en">About</span><span data-l="ar">نبذة</span></a><a href="#brands"><span data-l="en">Brands</span><span data-l="ar">البراندات</span></a><a href="#results"><span data-l="en">Results</span><span data-l="ar">النتائج</span></a><a href="#contact"><span data-l="en">Contact</span><span data-l="ar">تواصل</span></a></div>
+<div class="links" id="lk"><a href="#home"><span data-l="en" data-k="nav.1">Home</span><span data-l="ar" data-k="nav.1">الرئيسية</span></a><a href="#about"><span data-l="en" data-k="nav.2">About</span><span data-l="ar" data-k="nav.2">نبذة</span></a><a href="#brands"><span data-l="en" data-k="nav.3">Brands</span><span data-l="ar" data-k="nav.3">البراندات</span></a><a href="#results"><span data-l="en" data-k="nav.4">Results</span><span data-l="ar" data-k="nav.4">النتائج</span></a><a href="#contact"><span data-l="en" data-k="nav.5">Contact</span><span data-l="ar" data-k="nav.5">تواصل</span></a></div>
 <div class="tools"><button class="pill" id="mn" aria-label="menu">☰</button><button class="pill" id="th" aria-label="theme"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="display:block;margin:auto"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button><button class="pill" id="lg">العربية</button></div>
 </nav>
 
 <section class="hero" id="home">
 <div class="glow"></div>
-<div class="big">ABDELAZIZ TAMER</div>
+<div class="big" data-ks="hero.name">ABDELAZIZ TAMER</div>
 <img class="me w" alt="" src="assets/photo-white-sweater.webp"><img class="me d" src="assets/photo-dark-sweater.webp" alt="Abdelaziz Tamer">
 <div class="row">
 <div>
 
-<small>Media Buyer | <span data-l="en">E-commerce Specialist</span><span data-l="ar">متخصص تجارة إلكترونية</span></small>
-<h1><span data-l="en">Turn Your Ads Into Real Growth Opportunities.</span><span data-l="ar">حوّل إعلاناتك لفرص نمو حقيقية.</span></h1>
-<p style="color:var(--mute);font-size:14px;margin-bottom:12px"><span data-l="en">I help brands increase their sales through data-driven advertising strategies, performance analysis, and targeted campaigns that reach the right audience.</span><span data-l="ar">بساعد البراندات تزود مبيعاتها من خلال استراتيجيات إعلانية مبنية على البيانات، وتحليل الأداء، وحملات موجهة توصل للجمهور الصح.</span></p>
-<a class="btn fill" href="#book"><span data-l="en">BOOK A MEETING</span><span data-l="ar">احجز اجتماع</span></a>
-<a class="btn" href="#results"><span data-l="en">EXPLORE CAMPAIGN RESULTS</span><span data-l="ar">شوف نتائج الحملات</span></a>
+<small><span data-ks="hero.role">Media Buyer</span> | <span data-l="en" data-k="home.1">E-commerce Specialist</span><span data-l="ar" data-k="home.1">متخصص تجارة إلكترونية</span></small>
+<h1><span data-l="en" data-k="home.2">Turn Your Ads Into Real Growth Opportunities.</span><span data-l="ar" data-k="home.2">حوّل إعلاناتك لفرص نمو حقيقية.</span></h1>
+<p style="color:var(--mute);font-size:14px;margin-bottom:12px"><span data-l="en" data-k="home.3">I help brands increase their sales through data-driven advertising strategies, performance analysis, and targeted campaigns that reach the right audience.</span><span data-l="ar" data-k="home.3">بساعد البراندات تزود مبيعاتها من خلال استراتيجيات إعلانية مبنية على البيانات، وتحليل الأداء، وحملات موجهة توصل للجمهور الصح.</span></p>
+<a class="btn fill" href="#book"><span data-l="en" data-k="home.4">BOOK A MEETING</span><span data-l="ar" data-k="home.4">احجز اجتماع</span></a>
+<a class="btn" href="#results"><span data-l="en" data-k="home.5">EXPLORE CAMPAIGN RESULTS</span><span data-l="ar" data-k="home.5">شوف نتائج الحملات</span></a>
 </div>
-<div class="r"><span data-l="en">Smart Ads. Better Sales. Real Growth.</span><span data-l="ar">إعلانات ذكية. مبيعات أفضل. نمو حقيقي.</span></div>
+<div class="r"><span data-l="en" data-k="home.6">Smart Ads. Better Sales. Real Growth.</span><span data-l="ar" data-k="home.6">إعلانات ذكية. مبيعات أفضل. نمو حقيقي.</span></div>
 </div>
 </section>
 
 <section id="about" class="rv">
-<span class="tag"><span data-l="en">About Me</span><span data-l="ar">نبذة عني</span></span>
-<h2><span data-l="en">Behind Every Successful Result Is a Smart Strategy.</span><span data-l="ar">وراء كل نتيجة ناجحة استراتيجية ذكية.</span></h2>
-<p class="lead"><span data-l="en">I'm Abdelaziz Tamer, a Media Buyer specializing in E-commerce advertising. I plan and manage advertising campaigns by understanding the market, analyzing target audiences, and testing creative ideas to achieve the best possible performance.<br><br>I believe successful advertising is not just about spending money. It's about making the right decisions and continuously optimizing performance.</span><span data-l="ar">أنا عبدالعزيز تامر، ميديا باير متخصص في إعلانات التجارة الإلكترونية. بخطط وبدير الحملات الإعلانية من خلال فهم السوق، وتحليل الجمهور المستهدف، وتجربة أفكار إبداعية للوصول لأفضل أداء ممكن.<br><br>أنا مؤمن إن الإعلان الناجح مش بس إنك تصرف فلوس، لكن إنك تاخد القرارات الصح وتحسّن الأداء باستمرار.</span></p>
-<p style="margin-top:20px;font-weight:600;max-width:60ch"><span data-l="en">My goal is to become part of your brand's growth journey and help you achieve better sales while making smarter use of your advertising budget.</span><span data-l="ar">هدفي أكون جزء من رحلة نمو براندك وأساعدك تحقق مبيعات أفضل وتستفيد أكتر من ميزانيتك الإعلانية.</span></p>
+<span class="tag"><span data-l="en" data-k="about.1">About Me</span><span data-l="ar" data-k="about.1">نبذة عني</span></span>
+<h2><span data-l="en" data-k="about.2">Behind Every Successful Result Is a Smart Strategy.</span><span data-l="ar" data-k="about.2">وراء كل نتيجة ناجحة استراتيجية ذكية.</span></h2>
+<p class="lead"><span data-l="en" data-k="about.3">I'm Abdelaziz Tamer, a Media Buyer specializing in E-commerce advertising. I plan and manage advertising campaigns by understanding the market, analyzing target audiences, and testing creative ideas to achieve the best possible performance.<br><br>I believe successful advertising is not just about spending money. It's about making the right decisions and continuously optimizing performance.</span><span data-l="ar" data-k="about.3">أنا عبدالعزيز تامر، ميديا باير متخصص في إعلانات التجارة الإلكترونية. بخطط وبدير الحملات الإعلانية من خلال فهم السوق، وتحليل الجمهور المستهدف، وتجربة أفكار إبداعية للوصول لأفضل أداء ممكن.<br><br>أنا مؤمن إن الإعلان الناجح مش بس إنك تصرف فلوس، لكن إنك تاخد القرارات الصح وتحسّن الأداء باستمرار.</span></p>
+<p style="margin-top:20px;font-weight:600;max-width:60ch"><span data-l="en" data-k="about.4">My goal is to become part of your brand's growth journey and help you achieve better sales while making smarter use of your advertising budget.</span><span data-l="ar" data-k="about.4">هدفي أكون جزء من رحلة نمو براندك وأساعدك تحقق مبيعات أفضل وتستفيد أكتر من ميزانيتك الإعلانية.</span></p>
 </section>
 
 <section class="brands rv" id="brands">
-<span class="tag"><span data-l="en">Trusted Partners</span><span data-l="ar">شركاء النجاح</span></span>
-<h2><span data-l="en">Brands We've Grown Together.</span><span data-l="ar">براندات كبرنا معاها سوا.</span></h2>
-<p class="lead"><span data-l="en">I'm proud to have worked with different brands that trusted me to manage their advertising campaigns and contribute to achieving their marketing goals.</span><span data-l="ar">فخور إني اشتغلت مع براندات مختلفة وثقت فيا أدير حملاتها الإعلانية وأساهم في تحقيق أهدافها التسويقية.</span></p>
+<span class="tag"><span data-l="en" data-k="brands.1">Trusted Partners</span><span data-l="ar" data-k="brands.1">شركاء النجاح</span></span>
+<h2><span data-l="en" data-k="brands.2">Brands We've Grown Together.</span><span data-l="ar" data-k="brands.2">براندات كبرنا معاها سوا.</span></h2>
+<p class="lead"><span data-l="en" data-k="brands.3">I'm proud to have worked with different brands that trusted me to manage their advertising campaigns and contribute to achieving their marketing goals.</span><span data-l="ar" data-k="brands.3">فخور إني اشتغلت مع براندات مختلفة وثقت فيا أدير حملاتها الإعلانية وأساهم في تحقيق أهدافها التسويقية.</span></p>
 <div class="meta" id="meta" role="img" aria-label="Meta"></div>
-<p style="font-weight:600;margin-top:10px"><span data-l="en">Different Brands. Shared Goals. Real Work.</span><span data-l="ar">براندات مختلفة. أهداف مشتركة. شغل حقيقي.</span></p><p style="color:var(--mute);font-size:12px">Placeholder logos for preview</p>
+<p style="font-weight:600;margin-top:10px"><span data-l="en" data-k="brands.4">Different Brands. Shared Goals. Real Work.</span><span data-l="ar" data-k="brands.4">براندات مختلفة. أهداف مشتركة. شغل حقيقي.</span></p>
 </section>
 
 <section id="services" class="rv">
-<span class="tag"><span data-l="en">What I Do</span><span data-l="ar">أعمل إيه</span></span>
-<h2><span data-l="en">Every Advertising Move Has a Purpose.</span><span data-l="ar">كل خطوة إعلانية ليها هدف.</span></h2>
-<p class="lead"><span data-l="en">Comprehensive advertising solutions that help businesses reach the right audience and achieve their sales objectives. Platforms: Meta Ads (Facebook &amp; Instagram) and TikTok Ads.</span><span data-l="ar">حلول إعلانية متكاملة بتساعد الشركات توصل للجمهور الصح وتحقق أهداف المبيعات. المنصات: إعلانات ميتا (فيسبوك وإنستجرام) وتيك توك.</span></p>
+<span class="tag"><span data-l="en" data-k="services.1">What I Do</span><span data-l="ar" data-k="services.1">أعمل إيه</span></span>
+<h2><span data-l="en" data-k="services.2">Every Advertising Move Has a Purpose.</span><span data-l="ar" data-k="services.2">كل خطوة إعلانية ليها هدف.</span></h2>
+<p class="lead"><span data-l="en" data-k="services.3">Comprehensive advertising solutions that help businesses reach the right audience and achieve their sales objectives. Platforms: Meta Ads (Facebook &amp; Instagram) and TikTok Ads.</span><span data-l="ar" data-k="services.3">حلول إعلانية متكاملة بتساعد الشركات توصل للجمهور الصح وتحقق أهداف المبيعات. المنصات: إعلانات ميتا (فيسبوك وإنستجرام) وتيك توك.</span></p>
 <div class="grid" id="sv"></div>
 </section>
 
 <section id="results" class="rv">
-<span class="tag"><span data-l="en">Real Campaigns. Real Data.</span><span data-l="ar">حملات حقيقية. أرقام حقيقية.</span></span>
-<h2><span data-l="en">Numbers Don't Lie. Results Speak.</span><span data-l="ar">الأرقام مبتكدبش. والنتائج بتتكلم.</span></h2>
-<p class="lead"><span data-l="en">Featured campaigns with real results. Click any campaign to see the strategy behind the result.</span><span data-l="ar">أبرز الحملات اللي اشتغلت عليها ونتايجها الحقيقية. اضغط على أي حملة وشوف الاستراتيجية اللي ورا النتيجة.</span></p>
+<span class="tag"><span data-l="en" data-k="results.1">Real Campaigns. Real Data.</span><span data-l="ar" data-k="results.1">حملات حقيقية. أرقام حقيقية.</span></span>
+<h2><span data-l="en" data-k="results.2">Numbers Don't Lie. Results Speak.</span><span data-l="ar" data-k="results.2">الأرقام مبتكدبش. والنتائج بتتكلم.</span></h2>
+<p class="lead"><span data-l="en" data-k="results.3">Featured campaigns with real results. Click any campaign to see the strategy behind the result.</span><span data-l="ar" data-k="results.3">أبرز الحملات اللي اشتغلت عليها ونتايجها الحقيقية. اضغط على أي حملة وشوف الاستراتيجية اللي ورا النتيجة.</span></p>
 <div class="cases" id="cases"></div>
 </section>
 
 <section id="why" class="rv">
-<span class="tag"><span data-l="en">Why Choose Me</span><span data-l="ar">ليه تشتغل معايا</span></span>
-<h2><span data-l="en">More Than Just Ads. A Strategy for Your Business Growth.</span><span data-l="ar">أكتر من مجرد إعلانات. استراتيجية لنمو بيزنسك.</span></h2>
+<span class="tag"><span data-l="en" data-k="why.1">Why Choose Me</span><span data-l="ar" data-k="why.1">ليه تشتغل معايا</span></span>
+<h2><span data-l="en" data-k="why.2">More Than Just Ads. A Strategy for Your Business Growth.</span><span data-l="ar" data-k="why.2">أكتر من مجرد إعلانات. استراتيجية لنمو بيزنسك.</span></h2>
 <div class="grid" id="wy"></div>
-<p style="margin-top:30px;font-weight:600"><span data-l="en">Our goal isn't just to run ads. It's to create real value for your business.</span><span data-l="ar">هدفنا مش بس نشغل إعلانات، هدفنا نصنع قيمة حقيقية لبيزنسك.</span></p>
+<p style="margin-top:30px;font-weight:600"><span data-l="en" data-k="why.3">Our goal isn't just to run ads. It's to create real value for your business.</span><span data-l="ar" data-k="why.3">هدفنا مش بس نشغل إعلانات، هدفنا نصنع قيمة حقيقية لبيزنسك.</span></p>
 </section>
 
 <section id="meeting" class="rv">
-<span class="tag"><span data-l="en">Let's Work Together</span><span data-l="ar">يلا نشتغل سوا</span></span>
+<span class="tag"><span data-l="en" data-k="meeting.1">Let's Work Together</span><span data-l="ar" data-k="meeting.1">يلا نشتغل سوا</span></span>
 <div class="split">
-<div><h2 style="font-size:clamp(28px,3.6vw,48px)"><span data-l="en">Every Great Partnership Starts With a Conversation.</span><span data-l="ar">كل شراكة ناجحة بتبدأ بمحادثة.</span></h2><p class="lead" style="margin-bottom:16px"><span data-l="en">Let's get to know your business, discuss your goals, and explore opportunities to improve your advertising performance.</span><span data-l="ar">خلينا نتعرف على بيزنسك ونتكلم عن أهدافك ونكتشف فرص تحسين أداء إعلاناتك.</span></p><a class="btn fill" href="#book"><span data-l="en">BOOK A MEETING</span><span data-l="ar">احجز اجتماع</span></a><a class="btn" data-wa href="#"><span data-l="en">WHATSAPP</span><span data-l="ar">واتساب</span></a></div>
-<div><h2 style="font-size:clamp(28px,3.6vw,48px)"><span data-l="en">Tell Me About Your Business.</span><span data-l="ar">احكيلي عن بيزنسك.</span></h2><p class="lead" style="margin-bottom:16px"><span data-l="en">The more I know about your business, the better I can understand your needs and identify the right advertising strategy for you.</span><span data-l="ar">كل ما عرفت أكتر عن بيزنسك، فهمت احتياجك أحسن وحددت الاستراتيجية الإعلانية المناسبة ليك.</span></p><a class="btn" href="#brief"><span data-l="en">FILL OUT THE BRIEF</span><span data-l="ar">املأ البريف</span></a></div>
+<div><h2 style="font-size:clamp(28px,3.6vw,48px)"><span data-l="en" data-k="meeting.2">Every Great Partnership Starts With a Conversation.</span><span data-l="ar" data-k="meeting.2">كل شراكة ناجحة بتبدأ بمحادثة.</span></h2><p class="lead" style="margin-bottom:16px"><span data-l="en" data-k="meeting.3">Let's get to know your business, discuss your goals, and explore opportunities to improve your advertising performance.</span><span data-l="ar" data-k="meeting.3">خلينا نتعرف على بيزنسك ونتكلم عن أهدافك ونكتشف فرص تحسين أداء إعلاناتك.</span></p><a class="btn fill" href="#book"><span data-l="en" data-k="meeting.4">BOOK A MEETING</span><span data-l="ar" data-k="meeting.4">احجز اجتماع</span></a><a class="btn" data-wa href="#"><span data-l="en" data-k="meeting.5">WHATSAPP</span><span data-l="ar" data-k="meeting.5">واتساب</span></a></div>
+<div><h2 style="font-size:clamp(28px,3.6vw,48px)"><span data-l="en" data-k="meeting.6">Tell Me About Your Business.</span><span data-l="ar" data-k="meeting.6">احكيلي عن بيزنسك.</span></h2><p class="lead" style="margin-bottom:16px"><span data-l="en" data-k="meeting.7">The more I know about your business, the better I can understand your needs and identify the right advertising strategy for you.</span><span data-l="ar" data-k="meeting.7">كل ما عرفت أكتر عن بيزنسك، فهمت احتياجك أحسن وحددت الاستراتيجية الإعلانية المناسبة ليك.</span></p><a class="btn" href="#brief"><span data-l="en" data-k="meeting.8">FILL OUT THE BRIEF</span><span data-l="ar" data-k="meeting.8">املأ البريف</span></a></div>
 </div>
 </section>
 
 <section id="showcase" class="rv">
-<span class="tag"><span data-l="en">Behind the Numbers</span><span data-l="ar">ورا الأرقام</span></span>
-<h2><span data-l="en">Real Work. Real Campaigns.</span><span data-l="ar">شغل حقيقي. حملات حقيقية.</span></h2>
-<p class="lead"><span data-l="en">A closer look at the campaigns I've managed, showcasing my journey in performance analysis, campaign management, and continuous optimization.</span><span data-l="ar">نظرة أقرب على الحملات اللي أدرتها، وبتعرض رحلتي في تحليل الأداء وإدارة الحملات والتحسين المستمر.</span></p>
+<span class="tag"><span data-l="en" data-k="showcase.1">Behind the Numbers</span><span data-l="ar" data-k="showcase.1">ورا الأرقام</span></span>
+<h2><span data-l="en" data-k="showcase.2">Real Work. Real Campaigns.</span><span data-l="ar" data-k="showcase.2">شغل حقيقي. حملات حقيقية.</span></h2>
+<p class="lead"><span data-l="en" data-k="showcase.3">A closer look at the campaigns I've managed, showcasing my journey in performance analysis, campaign management, and continuous optimization.</span><span data-l="ar" data-k="showcase.3">نظرة أقرب على الحملات اللي أدرتها، وبتعرض رحلتي في تحليل الأداء وإدارة الحملات والتحسين المستمر.</span></p>
 <div class="tm" id="sc"></div>
 </section>
 
 <section id="testimonials" class="rv">
-<span class="tag"><span data-l="en">Client Feedback</span><span data-l="ar">آراء العملاء</span></span>
-<h2><span data-l="en">Trust Is Built Through Work and Proven Through Experience.</span><span data-l="ar">الثقة بتتبني بالشغل وبتتثبت بالتجربة.</span></h2>
-<p class="lead"><span data-l="en">Real experiences and honest feedback from clients I've had the pleasure of working with.</span><span data-l="ar">تجارب حقيقية وآراء صادقة من عملاء اشتغلت معاهم.</span></p>
+<span class="tag"><span data-l="en" data-k="testimonials.1">Client Feedback</span><span data-l="ar" data-k="testimonials.1">آراء العملاء</span></span>
+<h2><span data-l="en" data-k="testimonials.2">Trust Is Built Through Work and Proven Through Experience.</span><span data-l="ar" data-k="testimonials.2">الثقة بتتبني بالشغل وبتتثبت بالتجربة.</span></h2>
+<p class="lead"><span data-l="en" data-k="testimonials.3">Real experiences and honest feedback from clients I've had the pleasure of working with.</span><span data-l="ar" data-k="testimonials.3">تجارب حقيقية وآراء صادقة من عملاء اشتغلت معاهم.</span></p>
 <div class="tm" id="tm"></div>
 </section>
 
 <section id="contact" class="cta rv">
-<span class="tag"><span data-l="en">Let's Connect</span><span data-l="ar">خلينا نتواصل</span></span>
-<h2><span data-l="en">Your Business Deserves a Better Strategy.</span><span data-l="ar">بيزنسك يستاهل استراتيجية أفضل.</span></h2>
-<p class="lead"><span data-l="en">Do you own a brand or an e-commerce store and want to reach more customers and increase your sales? Let's Build Something That Grows.</span><span data-l="ar">عندك براند أو متجر إلكتروني وعايز توصل لعملاء أكتر وتزود مبيعاتك؟ خلينا نبني حاجة بتكبر.</span></p>
-<a class="btn fill" data-wa href="#">WhatsApp</a><a class="btn" data-fb href="#">Facebook</a><a class="btn" data-ig href="#">Instagram</a>
+<span class="tag"><span data-l="en" data-k="contact.1">Let's Connect</span><span data-l="ar" data-k="contact.1">خلينا نتواصل</span></span>
+<h2><span data-l="en" data-k="contact.2">Your Business Deserves a Better Strategy.</span><span data-l="ar" data-k="contact.2">بيزنسك يستاهل استراتيجية أفضل.</span></h2>
+<p class="lead"><span data-l="en" data-k="contact.3">Do you own a brand or an e-commerce store and want to reach more customers and increase your sales? Let's Build Something That Grows.</span><span data-l="ar" data-k="contact.3">عندك براند أو متجر إلكتروني وعايز توصل لعملاء أكتر وتزود مبيعاتك؟ خلينا نبني حاجة بتكبر.</span></p>
+<a class="btn fill" data-wa href="#">WhatsApp</a><span id="soc"></span>
 </section>
 
-<footer><div><b>ABDELAZIZ TAMER</b>Media Buyer | E-commerce Specialist</div><div><span data-l="en">Smart Ads. Better Sales. Real Growth.</span><span data-l="ar">إعلانات ذكية. مبيعات أفضل. نمو حقيقي.</span></div></footer>
+<footer><div><b data-ks="footer.name">ABDELAZIZ TAMER</b><span data-ks="footer.role">Media Buyer | E-commerce Specialist</span></div><div><span data-l="en" data-k="footer.1">Smart Ads. Better Sales. Real Growth.</span><span data-l="ar" data-k="footer.1">إعلانات ذكية. مبيعات أفضل. نمو حقيقي.</span></div></footer>
 
 <div class="cs" id="csv"></div>
 <script src="config.js"></script>
-<script src="config.js"></script>
+<script src="defaults.js"></script>
 <script>
-const D={sv:[["Campaign Management","إدارة الحملات","Planning, launching, and managing advertising campaigns to achieve the best possible performance.","تخطيط وإطلاق وإدارة الحملات الإعلانية لتحقيق أفضل أداء ممكن."],["Market & Competitor Research","أبحاث السوق والمنافسين","Analyzing the market and competitors to identify opportunities and build effective strategies.","تحليل السوق والمنافسين لاكتشاف الفرص وبناء استراتيجيات فعالة."],["Audience Research","أبحاث الجمهور","Understanding target audiences, their interests, and purchasing behaviors.","فهم الجمهور المستهدف واهتماماته وسلوكه الشرائي."],["Advertising Strategy","الاستراتيجية الإعلانية","Developing strategies aligned with your brand's goals, market, and budget.","بناء استراتيجيات متوافقة مع أهداف براندك وسوقك وميزانيتك."],["Performance Optimization","تحسين الأداء","Analyzing campaign data and continuously optimizing for better results.","تحليل بيانات الحملات وتحسينها باستمرار لنتائج أفضل."],["Creative Testing","اختبار الكرييتيف","Testing different concepts and creatives to find what resonates most.","اختبار أفكار وتصاميم مختلفة لمعرفة الأكثر تأثيرًا في جمهورك."],["Performance Reporting","تقارير الأداء","Clear performance reports to track results and measure key metrics.","تقارير أداء واضحة لمتابعة النتائج وقياس أهم المؤشرات."]],
-mt:[["REVENUE","الإيرادات","Total Sales Generated","إجمالي المبيعات",["$",250,"K"]],["AD SPEND","الإنفاق الإعلاني","Total Advertising Spend","إجمالي الإنفاق",["$",50,"K"]],["ROAS","العائد على الإنفاق","Return on Ad Spend","العائد على الإنفاق الإعلاني",["",5,"x"]],["ORDERS","الطلبات","Total Number of Orders","إجمالي عدد الطلبات",["",3200,""]],["CPA","تكلفة الاكتساب","Cost Per Acquisition","تكلفة الحصول على عميل",["$",15,""]],["CONVERSION RATE","معدل التحويل","Visitors Who Convert","نسبة الزوار اللي بيشتروا",["",3.4,"%"]]],
-wy:[["Data-Driven Decisions","قرارات مبنية على البيانات","Informed decisions based on data analysis, not assumptions.","قرارات مدروسة بالتحليل مش بالتخمين."],["Business Understanding","فهم البيزنس","Understanding your business and market before launching any campaign.","أفهم بيزنسك وسوقك قبل إطلاق أي حملة."],["Smart Targeting","استهداف ذكي","Reaching the audience most interested in your products.","الوصول للجمهور الأكثر اهتمامًا بمنتجاتك."],["Continuous Testing","اختبار مستمر","Constantly testing concepts to identify what works best.","اختبار الأفكار باستمرار لمعرفة الأنجح."],["Performance Optimization","تحسين الأداء","Monitoring and optimizing campaigns for the highest efficiency.","متابعة الحملات وتحسينها لأعلى كفاءة."],["Sales-Focused Strategy","استراتيجية تركز على المبيعات","Our primary focus is increasing sales and maximizing your ad budget.","تركيزنا الأساسي زيادة المبيعات والاستفادة القصوى من ميزانيتك."]]};
-const cd=(a,i,n)=>`<div class="card"><span class="n">0${i+1}</span><h3><span data-l="en">${a[0]}</span><span data-l="ar">${a[1]}</span></h3><p><span data-l="en">${a[2]}</span><span data-l="ar">${a[3]}</span></p></div>`;
-sv.innerHTML=D.sv.map(cd).join("");wy.innerHTML=D.wy.map(cd).join("");
-
+const bi=(en,ar)=>`<span data-l="en">${en}</span><span data-l="ar">${ar}</span>`;
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nl=s=>esc(s).replace(/\n/g,"<br>"),bn=(a,b)=>bi(nl(a),nl(b));
+const DEF=window.P2_DEF||{};let CT={},SET={};
+const ls=k=>Array.isArray(CT[k])?CT[k]:(DEF[k]||[]);
+const safeUrl=u=>/^(https?:\/\/)/i.test(u||"")?esc(u):"";
 const br=["NOVA","Lumia","Verde","AURA","Kito","Zayn","Orbit","Mira","Sahm","Delta"],r=a=>{let h=a.map(x=>`<span>${x}</span>`).join("");return `<div class="tr">${h}${h}</div>`};
 meta.innerHTML=`<svg viewBox="0 -25 300 215" style="position:absolute;inset:0;width:100%;height:100%"><defs><linearGradient id="mg" x1="0" y1="-25" x2="300" y2="190" gradientUnits="userSpaceOnUse"><stop offset="0" style="stop-color:var(--g1)"/><stop offset=".55" style="stop-color:var(--g2)"/><stop offset="1" style="stop-color:var(--g3)"/></linearGradient></defs><path id="lp" fill="none" stroke="url(#mg)" stroke-width="58" stroke-linecap="round" d="M30 82C30 14 100 6 150 82S270 150 270 82C270 14 200 6 150 82S30 150 30 82"/><g id="lt"></g></svg>`;
-{const ns="http://www.w3.org/2000/svg",lp=document.getElementById("lp"),L=lp.getTotalLength(),g=document.getElementById("lt"),N=720,P=[],A=[];
-for(let i=0;i<=N;i++){const a=lp.getPointAtLength(i*L/N),b=lp.getPointAtLength(Math.min(L,(i+1)*L/N));P.push(a);let d=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;if(d>90||d<-90)d+=180;A.push(d)}
-const nm=["NOVA","Lumia","Verde","AURA","Kito","Zayn","Orbit"],n=nm.length,S=L/n,it=nm.map((s,i)=>{const t=document.createElementNS(ns,"text");t.textContent=s;t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","central");t.style.cssText="font:800 18px Inter,sans-serif;fill:var(--mx)";g.appendChild(t);return{t,d:i*S}});
-const W=Math.max(...it.map(x=>x.t.getComputedTextLength()))||60,fs=Math.min(18,18*.5*S/W);it.forEach(x=>x.t.style.fontSize=fs+"px");
-let off=0,last=performance.now();
-(function f(now){requestAnimationFrame(f);const dt=Math.max(0,Math.min(50,now-last));last=now;off+=dt*.016*(window.LS||1);it.forEach(x=>{const u=((x.d+off)%L)/L*N,k=Math.min(N-1,Math.floor(u)),r=u-k,a=P[k],b=P[k+1];x.t.setAttribute("transform",`translate(${(a.x+(b.x-a.x)*r).toFixed(2)} ${(a.y+(b.y-a.y)*r).toFixed(2)}) rotate(${A[k].toFixed(1)})`)})})(last)}
-const q=[["Great communication and clear results from the first month.","تواصل ممتاز ونتائج واضحة من أول شهر.","Client A","عميل أ"],["He understood our store fast and cut our cost per order.","فهم متجرنا بسرعة وقلل تكلفة الطلب عندنا.","Client B","عميل ب"],["Clear reports and decisions based on data.","تقارير واضحة وقرارات مبنية على البيانات.","Client C","عميل ج"],["Our sales grew steadily after the new campaign structure.","مبيعاتنا زادت بثبات بعد هيكلة الحملات الجديدة.","Client D","عميل د"]];
-const qh=a=>a.concat(a).map(x=>`<q><span data-l="en">${x[0]}</span><span data-l="ar">${x[1]}</span><b><span data-l="en">${x[2]}</span><span data-l="ar">${x[3]}</span></b></q>`).join("");
-tm.innerHTML=`<div class="tr">${qh(q)}</div><div class="tr">${qh(q.slice().reverse())}</div>`;
-const S="<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 200'><path d='M62 100C62 52 100 40 124 66C142 86 158 114 176 134C200 160 238 148 238 100C238 52 200 40 176 66C158 86 142 114 124 134C100 160 62 148 62 100Z' fill='none' stroke='white' stroke-width='38' stroke-linejoin='round'/></svg>";
-
-const C=[["Brand One","1M EGP","مليون جنيه"],["Brand Two","850K EGP","850 ألف جنيه"],["Brand Three","1.2M EGP","1.2 مليون جنيه"],["Brand Four","600K EGP","600 ألف جنيه"]];
-const bi=(en,ar)=>`<span data-l="en">${en}</span><span data-l="ar">${ar}</span>`;
-cases.innerHTML=C.map((c,i)=>`<a class="case" href="#case-${i+1}"><div class="ph">Screenshot 0${i+1}</div><div class="ci"><span class="tag">0${i+1}</span><h3>${c[0]}</h3><div class="rs">${bi(c[1],c[2])}</div><span class="v">${bi("View case study →","شاهد دراسة الحالة ←")}</span></div></a>`).join("");
-const sh=n=>Array.from({length:n},(_,i)=>`<div class="ph">Screenshot 0${i+1}</div>`).join("");
-sc.innerHTML=`<div class="tr">${sh(6)}${sh(6)}</div><div class="tr">${sh(6)}${sh(6)}</div>`;
-const ST=[["Research","البحث","Market, competitor and audience research. (Strategy details will be added here.)","بحث السوق والمنافسين والجمهور. (تفاصيل الاستراتيجية هتتضاف هنا.)"],["Creative Testing","اختبار الكرييتيف","Testing different concepts and creatives. (Details to be added.)","اختبار أفكار وتصاميم مختلفة. (التفاصيل هتتضاف.)"],["Scaling","التوسع","How the winning campaigns were scaled. (Details to be added.)","إزاي اتم التوسع في الحملات الناجحة. (التفاصيل هتتضاف.)"],["Optimization","التحسين","Continuous optimization toward the goal. (Details to be added.)","تحسين مستمر للوصول للهدف. (التفاصيل هتتضاف.)"]];
+const LOOP={off:0,last:performance.now()};
+function buildLoop(items){
+const ns="http://www.w3.org/2000/svg",lp=document.getElementById("lp"),L=lp.getTotalLength(),g=document.getElementById("lt"),N=720;
+if(!LOOP.P){const P=[],A=[];for(let i=0;i<=N;i++){const a=lp.getPointAtLength(i*L/N),b=lp.getPointAtLength(Math.min(L,(i+1)*L/N));P.push(a);let d=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;if(d>90||d<-90)d+=180;A.push(d)}LOOP.P=P;LOOP.A=A}
+const P=LOOP.P,A=LOOP.A;cancelAnimationFrame(LOOP.raf);g.innerHTML="";
+if(!items.length)return;
+const n=items.length,S=L/n,iw=Math.min(46,S*.62),ih=iw*.62;
+const it=items.map((s,i)=>{let t;
+ if(s.img&&safeUrl(s.img)){t=document.createElementNS(ns,"image");t.setAttribute("href",s.img);t.setAttribute("width",iw);t.setAttribute("height",ih);t.setAttribute("x",-iw/2);t.setAttribute("y",-ih/2);t.setAttribute("preserveAspectRatio","xMidYMid meet")}
+ else{t=document.createElementNS(ns,"text");t.textContent=s.n||"";t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","central");t.style.cssText="font:800 18px var(--fbe);fill:var(--mx)"}
+ g.appendChild(t);return{t,d:i*S,txt:t.tagName=="text"}});
+const tx=it.filter(x=>x.txt),W=tx.length?Math.max(...tx.map(x=>x.t.getComputedTextLength()))||60:60,fs=Math.min(18,18*.5*S/W);tx.forEach(x=>x.t.style.fontSize=fs+"px");
+LOOP.last=performance.now();
+(function f(now){LOOP.raf=requestAnimationFrame(f);const dt=Math.max(0,Math.min(50,now-LOOP.last));LOOP.last=now;LOOP.off+=dt*.016*(window.LS||1);it.forEach(x=>{const u=((x.d+LOOP.off)%L)/L*N,k=Math.min(N-1,Math.floor(u)),r=u-k,a=P[k],b=P[k+1];x.t.setAttribute("transform",`translate(${(a.x+(b.x-a.x)*r).toFixed(2)} ${(a.y+(b.y-a.y)*r).toFixed(2)}) rotate(${A[k].toFixed(1)})`)})})(LOOP.last)}
 const $=id=>document.getElementById(id),CFG=window.P2_CONFIG||{},LIVE=!!(CFG.url&&CFG.key);let WA="201041249535";
 const wl=()=>document.querySelectorAll("[data-wa]").forEach(a=>{a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("أهلاً عبدالعزيز، عايز أتكلم معاك بخصوص إعلانات لبراندي.");a.target="_blank";a.rel="noopener"});
 const sb=(p,o={})=>fetch(CFG.url+"/rest/v1/"+p,{...o,headers:{apikey:CFG.key,...(CFG.key.startsWith("sb_")?{}:{Authorization:"Bearer "+CFG.key}),"Content-Type":"application/json",...(o.headers||{})}}).then(async r=>{if(!r.ok)throw new Error(await r.text());return r.status==204?null:r.json()});
@@ -267,60 +266,84 @@ c.disabled=1;try{const r=await API.book(s,{name:n,phone:p,activity:a});
 if(r&&r.ok){v.innerHTML=`<div class="csi"><h2>${bi("Booked ✓","تم تأكيد الحجز ✓")}</h2><p class="lead">${bd(s.starts_at)} — ${bt(s.starts_at)}<br>${bi("I'll contact you on the number you entered.","هتواصل معاك على الرقم اللي كتبته.")}</p><p style="margin-top:20px"><a class="btn fill" href="#home">${bi("Back to site","الرجوع للموقع")}</a><a class="btn" data-wa href="#">WhatsApp</a></p></div>`;wl()}
 else{await bookV(v);$("sl").insertAdjacentHTML("afterbegin","<p class='er'>الميعاد ده اتحجز، اختار ميعاد تاني — That slot was just taken.</p>")}}
 catch(x){e.textContent="حصلت مشكلة، جرّب تاني — Something went wrong.";c.disabled=0}}})}
-const Y=["نعم","لا"],YN=l=>[l,...Y],O=(...a)=>({o:a});
-const BR=[
-["معلومات العميل الأساسية","البيانات التعريفية للعميل والبراند","",[["name","اسم العميل / صاحب البيزنس","t",{r:1,ph:"الاسم الكامل"}],["brand","اسم البراند / المشروع","t",{r:1,ph:"اسم البراند كما يظهر للجمهور"}],["phone","رقم التواصل","tel",{ph:"رقم الهاتف / واتساب"}],["email","البريد الإلكتروني","email",{ph:"email@example.com"}],["loc","الموقع الجغرافي / المنطقة","t",{ph:"المدينة - المنطقة"}],["site","الموقع الإلكتروني (إن وُجد)","t",{ph:"www.example.com"}],["soc","روابط صفحات السوشيال ميديا","grid",{rows:["Instagram","Facebook","LinkedIn / X / Other","TikTok"],cols:["رابط الحساب"]}]]],
-["عن البراند والبيزنس","فهم طبيعة العمل والمنتجات أو الخدمات المقدمة","",[["dom","ايه مجال البيزنس بتاعك؟","rad",{r:1,...O("ملابس / فاشون","أكل / مطاعم","خدمات طبية","عقارات","تعليم / كورسات","تكنولوجيا / تطبيقات","خدمات مهنية","تجميل / عناية","E-Commerce","أخرى")}],["domo","لو أخرى، اذكر المجال","t",{}],["desc","وصف البراند بالتفصيل","ta",{h:"عرّف البراند كأنك بتعرّفه لحد أول مرة يسمع عنه",ph:"ايه اللي بتقدمه، ايه اللي بيميزك، ايه القصة ورا البراند..."}],["since","البراند موجود من إمتى؟","t",{ph:"مثال: من 2020"}],["bt","نوع البيزنس","rad",O("منتجات (Products)","خدمات (Services)","الاتنين")],["prod","ايه المنتجات / الخدمات الأساسية؟","grid",{r:1,h:"اذكر كل المنتجات أو الخدمات مع أسعارها لو ممكن",rows:["1","2","3","4","5"],cols:["المنتج / الخدمة","السعر",["الأكثر مبيعاً؟",...Y]]}],["usp","ايه الـ USP (الميزة التنافسية) بتاعتك؟","ta",{h:"ايه اللي بيخلي العميل يشتري منك مش من حد تاني؟",ph:"الميزة التنافسية اللي بتفرقك عن المنافسين..."}]]],
-["الجمهور المستهدف (Target Audience)","مين العميل المثالي بتاعك؟ — القسم الأهم في البريف","فهم الجمهور المستهدف بشكل دقيق هو أساس نجاح أي حملة إعلانية. كل ما كانت المعلومات دي دقيقة، كل ما قدرنا نوصل للعميل الصح بأقل تكلفة.",[["age","الفئة العمرية","chk",{r:1,...O("18-24","25-34","35-44","45-54","+55")}],["gen","الجنس","rad",{r:1,...O("رجال","ستات","الاتنين")}],["mar","الحالة الاجتماعية","chk",O("أعزب","متزوج","عنده أطفال","مش مهم")],["lvl","المستوى المادي","chk",O("A (عالي)","B (متوسط-عالي)","C (متوسط)","D (محدود)")],["reg","المناطق الجغرافية المستهدفة","ta",{r:1,h:"حدد المناطق أو المدن أو البلاد اللي عايز توصل ليها",ph:"مثال: القاهرة الكبرى - الإسكندرية - الدلتا..."}],["int","اهتمامات الجمهور (Interests)","ta",{h:"ايه الحاجات اللي جمهورك مهتم بيها؟",ph:"مثال: الموضة، التكنولوجيا، السفر، اللياقة البدنية..."}],["buy","سلوك الشراء عند جمهورك","chk",O("بيشتري أونلاين","بيشتري من المحل","بيتصل الأول","بيبعت رسالة","بيحجز ميعاد","بياخد وقت في القرار")],["pain","ايه أكبر مشكلة (Pain Point) عند جمهورك؟","ta",{h:"ايه المشكلة اللي منتجك بيحلها ليهم؟",ph:"المشاكل أو الاحتياجات اللي جمهورك بيعاني منها..."}]]],
-["تحليل المنافسين (Competitors)","مين المنافسين المباشرين وغير المباشرين ليك؟","",[["comp","اذكر أهم 3 منافسين ليك","list",{n:3,ph:"اسم المنافس + لينك الصفحة لو متاح"}],["diff","ايه اللي بيميزهم عنك؟ وايه اللي بيميزك عنهم؟","ta",{ph:"نقاط القوة والضعف مقارنة بالمنافسين..."}],["cpr","متوسط أسعار المنافسين مقارنة بأسعارك","rad",O("أسعاري أقل","أسعاري قريبة","أسعاري أعلى")]]],
-["الأهداف والـ KPIs","ايه اللي عايز تحققه من الحملات الإعلانية؟","",[["goal","الهدف الرئيسي من الإعلانات","chk",{r:1,...O("زيادة المبيعات (Sales)","جمع بيانات عملاء (Leads)","زيادة الوعي بالبراند (Awareness)","زيادة زيارات الموقع (Traffic)","زيادة تحميل التطبيق (App Installs)","زيادة المتابعين (Followers)","زيادة التفاعل (Engagement)","حجوزات / مواعيد")}],["cs","المبيعات الحالية شهرياً (تقريباً)","t",{ph:"مثال: 50,000 جنيه"}],["ts","الهدف المطلوب تحقيقه شهرياً","t",{ph:"مثال: 150,000 جنيه"}],["co","عدد الطلبات / العملاء الحاليين شهرياً","t",{ph:"مثال: 100 طلب"}],["to","عدد الطلبات / العملاء المستهدف","t",{ph:"مثال: 300 طلب"}],["cpa","ايه أقصى تكلفة للعميل الواحد / البيعة الواحدة مقبولة عندك؟ (CPA المتوقع)","t",{ph:"مثال: 50 جنيه لكل Lead"}],["aov","متوسط قيمة الطلب الواحد (AOV)","t",{ph:"مثال: 500 جنيه"}]]],
-["الميزانية الإعلانية (Budget)","تحديد الميزانية المتاحة للحملات","الميزانية لازم تكون متناسبة مع الأهداف. كل ما كانت الأهداف أكبر، كل ما احتجنا ميزانية أكبر للوصول ليها.",[["bm","الميزانية الشهرية للإعلانات","t",{r:1,ph:"مثال: 10,000 جنيه / شهر"}],["bd","الميزانية اليومية (لو محددة)","t",{ph:"مثال: 300 جنيه / يوم"}],["bc","هل عندك ميزانية منفصلة للمحتوى / التصميمات؟","rad",O("أيوه","لأ، محتاج الميديا باير يوفر كل حاجة","عندي تيم محتوى جاهز")],["dur","مدة التعاقد المتوقعة","rad",O("شهر تجربة","3 شهور","6 شهور","سنة","مفتوحة")]]],
-["المنصات والتواجد الرقمي","تقييم الوضع الحالي على السوشيال ميديا والمنصات الرقمية","",[["plat","ايه المنصات اللي عايز تعلن عليها؟","chk",{r:1,...O("Facebook & Instagram","TikTok","Google Ads (Search)","Google Ads (Display)","LinkedIn","Snapchat","YouTube","X / Twitter","مش عارف — محتاج نصيحة")}],["sst","الوضع الحالي على السوشيال ميديا","grid",{rows:["Facebook","Instagram","TikTok"],cols:["عدد المتابعين","متوسط التفاعل",YN("حساب إعلاني؟")]}],["pix","هل عندك Pixel / Conversion API مفعّل؟","rad",O("أيوه","لأ","مش عارف")],["ga","هل عندك Google Analytics / Tag Manager؟","rad",O("أيوه","لأ","مش عارف")],["store","هل عندك صفحة هبوط (Landing Page) أو متجر إلكتروني؟","rad",O("Salla / Zid","WooCommerce","Shopify","Landing Page","موقع مخصص","لا يوجد")]]],
-["الحملات الإعلانية السابقة","تقييم التجارب السابقة في الإعلانات","",[["prev","هل عملت إعلانات ممولة قبل كده؟","rad",O("أيوه، مع ميديا باير","أيوه، بنفسي","لأ، أول مرة")],["pres","لو عملت إعلانات قبل كده، ايه النتايج اللي حصلت عليها؟","ta",{ph:"اذكر أي أرقام تفتكرها: تكلفة الرسالة، عدد العملاء، ROAS، المبيعات..."}],["pwk","ايه اللي كان شغال كويس وايه اللي ما نفعش؟","ta",{ph:"الحاجات اللي جابت نتيجة والحاجات اللي ما جابتش..."}],["psp","كام كنت بتصرف على الإعلانات شهرياً؟","t",{ph:"مثال: 5,000 جنيه / شهر"}]]],
-["المحتوى والكريتيف (Creatives & Content)","المحتوى الإعلاني والمواد المتاحة","",[["mat","ايه المتاح عندك من مواد إعلانية؟","chk",O("صور احترافية للمنتجات","فيديوهات","تصميمات جاهزة","شهادات عملاء (Testimonials)","محتوى UGC","لوجو + Brand Guidelines","مفيش حاجة — محتاج كل حاجة")],["ct","ايه نوع المحتوى اللي بيشتغل مع جمهورك أكتر؟","chk",O("صور ثابتة","فيديو قصير (TikTok/Reels)","فيديو طويل","كاروسيل (Carousel)","عروض وتخفيضات","مش عارف")],["tone","هل في Tone of Voice معين للبراند؟","chk",O("رسمي (Formal)","ودي / كاجوال (Friendly)","كوميدي / ساخر","مُلهم / تحفيزي","تعليمي","فخم / Luxury")],["lng","اللغة المستخدمة في الإعلانات","chk",O("عربي فصحى","عامية مصرية","عامية خليجية","إنجليزي","عربي + إنجليزي")]]],
-["عملية البيع والـ Sales Process","فهم رحلة العميل من أول ما يشوف الإعلان لحد ما يشتري","",[["jr","ايه رحلة العميل بعد ما يشوف الإعلان؟","chk",{r:1,...O("يبعت رسالة على واتساب","يبعت رسالة على الصفحة","يتصل تليفونياً","يملأ فورم (Form)","يشتري من الموقع مباشرة","يزور المحل / الفرع","يحمّل التطبيق")}],["who","مين بيرد على العملاء؟","rad",O("صاحب البيزنس","تيم سيلز","خدمة عملاء","بوت آلي")],["rt","متوسط وقت الرد على العملاء","rad",O("فوراً","خلال ساعة","خلال يوم","أكتر من يوم")],["off","هل في عروض أو Offers حالية؟","ta",{ph:"اذكر أي عروض، خصومات، أو مميزات حالية تقدر تستخدمها في الإعلانات..."}],["del","هل في توصيل؟ ايه نظام التوصيل؟","t",{ph:"مثال: توصيل مجاني لحد باب البيت - شحن خلال 3 أيام"}],["ret","هل في سياسة إرجاع أو استبدال؟","t",{ph:"مثال: استبدال خلال 14 يوم - إرجاع خلال 7 أيام"}]]],
-["التحديات والعقبات الحالية","ايه المشاكل اللي بتواجهك حالياً وعايزنا نحلها؟","",[["ch","ايه أكبر تحدي بتواجهه في البيزنس حالياً؟","chk",O("المبيعات قليلة","مفيش عملاء جداد","تكلفة الإعلان عالية","معدل التحويل ضعيف","المنافسة شديدة","مش عارف أوصل للجمهور الصح","مشكلة في المحتوى","مشاكل تقنية (موقع / متجر)")],["dnt","ايه الحاجات اللي مش عايز تتعمل في الإعلانات؟","ta",{h:"أي حاجة مرفوضة أو مش مناسبة للبراند",ph:"مثال: مش عايز تخفيضات كبيرة عشان مش عايز أبوظ الـ Brand Image..."}],["nts","هل في أي ملاحظات أو طلبات خاصة؟","ta",{ph:"أي معلومات إضافية أو طلبات خاصة تحب تضيفها..."}]]]];
 const q1=s=>document.querySelector(s);
-function fh(f){const[id,l,t,o2=O()]=f,n="b_"+id,rq=o2.r?'<span class="rq">مطلوب</span>':"";let h="";
-if(t=="t"||t=="tel"||t=="email")h=`<input type="${t=="t"?"text":t}" id="${n}" placeholder="${o2.ph||""}">`;
-else if(t=="ta")h=`<textarea id="${n}" placeholder="${o2.ph||""}"></textarea>`;
-else if(t=="rad"||t=="chk")h=`<div class="op">${o2.o.map(x=>`<label><input type="${t=="rad"?"radio":"checkbox"}" name="${n}" value="${x}">${x}</label>`).join("")}</div>`;
-else if(t=="list")h=Array.from({length:o2.n},(_,i)=>`<input type="text" id="${n}_${i}" placeholder="${o2.ph} ${i+1}" style="margin-bottom:8px">`).join("");
-else if(t=="grid")h=o2.rows.map((r,i)=>`<div class="gr" style="grid-template-columns:${o2.cols.length>1?"90px":"140px"} repeat(${o2.cols.length},minmax(0,1fr));margin-bottom:8px"><span>${r}</span>${o2.cols.map((c,j)=>Array.isArray(c)?`<select id="${n}_${i}_${j}"><option value="">${c[0]}</option>${c.slice(1).map(x=>`<option>${x}</option>`).join("")}</select>`:`<input type="text" id="${n}_${i}_${j}" placeholder="${c}">`).join("")}</div>`).join("");
-return`<div class="fl"><b>${l}${rq}</b>${o2.h?`<small>${o2.h}</small>`:""}${h}</div>`}
-function fv(f){const[id,l,t,o2=O()]=f,n="b_"+id;
-if(t=="rad")return(q1(`input[name="${n}"]:checked`)||{}).value||"";
-if(t=="chk")return[...document.querySelectorAll(`input[name="${n}"]:checked`)].map(x=>x.value).join("، ");
-if(t=="list")return Array.from({length:o2.n},(_,i)=>q1("#"+n+"_"+i).value.trim()).filter(Boolean).join("\n");
-if(t=="grid")return o2.rows.map((r,i)=>{const c=o2.cols.map((_,j)=>q1("#"+n+"_"+i+"_"+j).value.trim());return c.some(Boolean)?r+": "+c.map(x=>x||"-").join(" | "):""}).filter(Boolean).join("\n");
+const BRF=()=>(CT.brief&&Array.isArray(CT.brief.sections)&&CT.brief.sections.length)?CT.brief:DEF.brief;
+function fh(f){const n="b_"+f.id,rq=f.req?'<span class="rq">مطلوب</span>':"",ph=esc(f.ph||""),t=f.type;let h="";
+if(t=="text"||t=="tel"||t=="email")h=`<input type="${t=="text"?"text":t}" id="${n}" placeholder="${ph}">`;
+else if(t=="textarea")h=`<textarea id="${n}" placeholder="${ph}"></textarea>`;
+else if(t=="radio"||t=="check")h=`<div class="op">${(f.opts||[]).map(x=>`<label><input type="${t=="radio"?"radio":"checkbox"}" name="${n}" value="${esc(x)}">${esc(x)}</label>`).join("")}</div>`;
+else if(t=="list")h=Array.from({length:Math.min(10,f.n||3)},(_,i)=>`<input type="text" id="${n}_${i}" placeholder="${ph} ${i+1}" style="margin-bottom:8px">`).join("");
+else if(t=="grid"){const cols=(f.cols||[]).map(c=>String(c).split("|"));h=(f.rows||[]).map((r,i)=>`<div class="gr" style="grid-template-columns:${cols.length>1?"90px":"140px"} repeat(${cols.length},minmax(0,1fr));margin-bottom:8px"><span>${esc(r)}</span>${cols.map((c,j)=>c.length>1?`<select id="${n}_${i}_${j}"><option value="">${esc(c[0])}</option>${c.slice(1).map(x=>`<option>${esc(x)}</option>`).join("")}</select>`:`<input type="text" id="${n}_${i}_${j}" placeholder="${esc(c[0])}">`).join("")}</div>`).join("")}
+return`<div class="fl"><b>${esc(f.l)}${rq}</b>${f.h?`<small>${esc(f.h)}</small>`:""}${h}</div>`}
+function fv(f){const n="b_"+f.id,t=f.type;
+if(t=="radio")return(q1(`input[name="${n}"]:checked`)||{}).value||"";
+if(t=="check")return[...document.querySelectorAll(`input[name="${n}"]:checked`)].map(x=>x.value).join("، ");
+if(t=="list")return Array.from({length:Math.min(10,f.n||3)},(_,i)=>q1("#"+n+"_"+i).value.trim()).filter(Boolean).join("\n");
+if(t=="grid"){const cs=(f.cols||[]);return(f.rows||[]).map((r,i)=>{const c=cs.map((_,j)=>q1("#"+n+"_"+i+"_"+j).value.trim());return c.some(Boolean)?r+": "+c.map(x=>x||"-").join(" | "):""}).filter(Boolean).join("\n")}
 return q1("#"+n).value.trim()}
-function briefV(v){v.innerHTML=`<div class="csi rtlx bfw">${BK("meeting")}<h2 style="margin-top:34px">بريف العميل</h2><p class="lead">املأ البيانات دي عشان نفهم بيزنسك ونحدد أنسب استراتيجية إعلانية ليك. الحقول المكتوب عليها "مطلوب" ضرورية.</p>${BR.map((s,i)=>`<div class="sec"><div class="sh"><span class="nb">${i+1}</span><div><h3>${s[0]}</h3><p>${s[1]}</p></div></div>${s[2]?`<div class="nt ${i==5?"am":"pk"}"><b>${i==5?"💡 نصيحة:":"⚡ ليه القسم ده مهم جداً؟"}</b> ${s[2]}</div>`:""}${s[3].map(fh).join("")}</div>`).join("")}<div id="be" class="er"></div><button class="btn fill" id="bs" style="font:600 16px Cairo,sans-serif;cursor:pointer">إرسال البريف</button></div>`;$("bs").onclick=sendBrief}
-async function sendBrief(){const e=$("be"),b=$("bs"),a=[],bad=[];
-BR.forEach(s=>s[3].forEach(f=>{const x=fv(f);if(f[3]&&f[3].r&&!x)bad.push(f[1]);if(x)a.push({s:s[0],q:f[1],a:x})}));
+function briefV(v){const B=BRF();v.innerHTML=`<div class="csi rtlx bfw">${BK("meeting")}<h2 style="margin-top:34px">${esc(B.title||"بريف العميل")}</h2><p class="lead">${nl(B.intro||"")}</p>${B.sections.map((s,i)=>`<div class="sec"><div class="sh"><span class="nb">${i+1}</span><div><h3>${esc(s.t)}</h3><p>${esc(s.s||"")}</p></div></div>${s.note?`<div class="nt ${s.nt=="am"?"am":"pk"}">${s.nl?`<b>${esc(s.nl)}</b> `:""}${nl(s.note)}</div>`:""}${(s.fields||[]).map(fh).join("")}</div>`).join("")}<div id="be" class="er"></div><button class="btn fill" id="bs" style="font:600 16px var(--fba);cursor:pointer">${esc(B.submit||"إرسال البريف")}</button></div>`;$("bs").onclick=sendBrief}
+async function sendBrief(){const e=$("be"),b=$("bs"),a=[],bad=[],by={},B=BRF();
+B.sections.forEach(s=>(s.fields||[]).forEach(f=>{const x=fv(f);by[f.id]=x;if(f.req&&!x)bad.push(f.l);if(x)a.push({s:s.t,q:f.l,a:x})}));
 if(bad.length){e.textContent="لازم تملأ: "+bad.join(" — ");return}
-const g=k=>(a.find(x=>x.q==k)||{}).a||"";b.disabled=1;b.textContent="جاري الإرسال...";
-try{await API.brief({client_name:g("اسم العميل / صاحب البيزنس"),brand_name:g("اسم البراند / المشروع"),phone:g("رقم التواصل"),answers:a});
+if(!a.length){e.textContent="املأ البيانات الأول";return}
+b.disabled=1;b.textContent="جاري الإرسال...";
+try{await API.brief({client_name:by.name||"",brand_name:by.brand||"",phone:by.phone||"",answers:a});
 $("csv").innerHTML=`<div class="csi rtlx bfw"><h2>تم إرسال البريف ✓</h2><p class="lead">شكراً ليك! هنراجع البيانات ونتواصل معاك قريباً.</p><p style="margin-top:20px"><a class="btn fill" href="#home">الرجوع للموقع</a><a class="btn" data-wa href="#">كلمني على واتساب</a></p></div>`;wl()}
-catch(x){e.textContent="حصلت مشكلة في الإرسال، جرّب تاني أو كلمني على واتساب.";b.disabled=0;b.textContent="إرسال البريف"}}
-function caseV(v,c){v.innerHTML=`<div class="csi"><a class="pill" href="#results" style="text-decoration:none;display:inline-block">${bi("← Back","رجوع →")}</a><span class="tag" style="margin-top:34px">${bi("Case Study","دراسة حالة")}</span><h2>${c[0]}</h2><div class="rs">${bi(c[1]+" in sales",c[2]+" مبيعات")}</div><div class="ph">Campaign screenshot</div><h3 style="font-size:30px;margin:40px 0 10px">${bi("The Strategy","الاستراتيجية")}</h3>${ST.map((s,i)=>`<div class="step"><b>0${i+1}</b><div><h3 style="font-size:20px;margin-bottom:6px">${bi(s[0],s[1])}</h3><p>${bi(s[2],s[3])}</p></div></div>`).join("")}</div>`}
-function route(){const h=location.hash,v=$("csv"),m=/^#case-(\d)$/.exec(h);
+catch(x){e.textContent="حصلت مشكلة في الإرسال، جرّب تاني أو كلمني على واتساب.";b.disabled=0;b.textContent=B.submit||"إرسال البريف"}}
+function caseV(v,c){const img=u=>safeUrl(u)?`<img src="${safeUrl(u)}" alt="" loading="lazy">`:"";
+v.innerHTML=`<div class="csi"><a class="pill" href="#results" style="text-decoration:none;display:inline-block">${bi("← Back","رجوع →")}</a><span class="tag" style="margin-top:34px">${bi("Case Study","دراسة حالة")}</span><h2>${esc(c.n)}</h2><div class="rs">${bn(c.re,c.ra)}</div>${img(c.img)?`<div class="ph">${img(c.img)}</div>`:`<div class="ph">Campaign screenshot</div>`}${(c.shots&&c.shots.length)?`<div class="gal">${c.shots.map(img).join("")}</div>`:""}${(c.sec||[]).map((s,i)=>`<div class="step"><b>0${i+1}</b><div><h3 style="font-size:22px;margin-bottom:6px">${bn(s.te,s.ta)}</h3><p>${bn(s.de,s.da)}</p>${safeUrl(s.img)?`<img class="sim" src="${safeUrl(s.img)}" alt="" loading="lazy">`:""}</div></div>`).join("")}</div>`}
+function route(){const h=location.hash,v=$("csv"),m=/^#case-(\d+)$/.exec(h),C=ls("cases");
 if(h=="#book"||h=="#brief"||(m&&C[m[1]-1])){document.body.style.overflow="hidden";v.classList.add("on");h=="#book"?bookV(v):h=="#brief"?briefV(v):caseV(v,C[m[1]-1]);v.scrollTop=0}else{v.classList.remove("on");document.body.style.overflow=""}}
 addEventListener("hashchange",route);route();wl();
-API.settings().then(s=>{if(!s)return;if(s.whatsapp)WA=String(s.whatsapp).replace(/\D/g,"");if(+s.logo_speed)window.LS=+s.logo_speed;if(+s.marquee_speed)document.documentElement.style.setProperty("--mq",+s.marquee_speed);[["fb","facebook"],["ig","instagram"]].forEach(([a,k])=>{if(/^https?:\/\//.test(s[k]||""))document.querySelectorAll("[data-"+a+"]").forEach(e=>{e.href=s[k];e.target="_blank";e.rel="noopener"})});wl()}).catch(()=>{});
 const R=document.documentElement;
-lg.onclick=()=>{const ar=R.lang!="ar";R.lang=ar?"ar":"en";R.dir=ar?"rtl":"ltr";lg.textContent=ar?"English":"العربية";try{localStorage.setItem("l",R.lang)}catch(e){}};
+lg.onclick=()=>setLang(R.lang!="ar");
 mn.onclick=()=>lk.classList.toggle("open");lk.onclick=()=>lk.classList.remove("open");
-setTimeout(()=>ld.classList.add("off"),1500);
 const fit=()=>{const e=document.querySelector(".hero .big");e.style.fontSize="";const w=e.clientWidth-24,s=e.scrollWidth;if(s>w)e.style.fontSize=(parseFloat(getComputedStyle(e).fontSize)*w/s)+"px"};fit();addEventListener("resize",fit);document.fonts&&document.fonts.ready.then(fit);
 const lgo=document.querySelector("nav img");lgo.style.cursor="pointer";lgo.onclick=()=>{ld.style.transition="none";ld.classList.remove("off");const im=ld.querySelector("img");im.style.animation="none";void ld.offsetWidth;im.style.animation="";ld.style.transition="";lk.classList.remove("open");if(location.hash)location.hash="home";scrollTo({top:0,behavior:"instant"});setTimeout(()=>ld.classList.add("off"),1500)};
 let mx=-999,my=0,cx=-999,cy=0,gx=-999,gy=0,hv=1,on=0;addEventListener("pointermove",e=>{mx=e.clientX;my=e.clientY;if(!on){on=1;cx=gx=mx;cy=gy=my}},{passive:true});if(matchMedia("(hover:hover) and (pointer:fine)").matches)(function f(){cx+=(mx-cx)*.35;cy+=(my-cy)*.35;gx+=(mx-gx)*.12;gy+=(my-gy)*.12;cur.style.transform=`translate3d(${cx}px,${cy}px,0) scale(${hv})`;glow.style.transform=`translate3d(${gx}px,${gy}px,0)`;requestAnimationFrame(f)})();
 document.addEventListener("pointerover",e=>{hv=e.target.closest("a,button,.card,nav img")?1.8:1});
 const io2=new IntersectionObserver(es=>es.forEach(x=>{if(!x.isIntersecting)return;io2.unobserve(x.target);const e=x.target,v=+e.dataset.v,d=v%1?1:0,t0=performance.now();(function f(t){const p=Math.min(1,(t-t0)/1400),n=v*(1-Math.pow(1-p,3));e.textContent=e.dataset.p+(d?n.toFixed(1):Math.round(n).toLocaleString("en"))+e.dataset.s;if(p<1)requestAnimationFrame(f)})(t0)}));
 document.querySelectorAll("[data-v]").forEach(e=>io2.observe(e));
-th.onclick=()=>{R.dataset.t=R.dataset.t=="light"?"":"light"};
-try{if(localStorage.getItem("l")=="ar")lg.click()}catch(e){}
+th.onclick=()=>setTheme(R.dataset.t=="light"?"dark":"light");
 const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("in")),{threshold:.12});
 document.querySelectorAll(".rv").forEach(e=>io.observe(e));
+
+const setLang=(ar,save=true)=>{R.lang=ar?"ar":"en";R.dir=ar?"rtl":"ltr";lg.textContent=ar?"English":"العربية";if(save)try{localStorage.setItem("l",R.lang)}catch(e){}};
+const setTheme=t=>{R.dataset.t=t=="light"?"light":"";try{localStorage.setItem("t",t)}catch(e){}};
+function renderLists(){
+const cd=(a,i)=>`<div class="card"><span class="n">0${i+1}</span><h3>${bn(a.te,a.ta)}</h3><p>${bn(a.de,a.da)}</p></div>`;
+$("sv").innerHTML=ls("services").map(cd).join("");$("wy").innerHTML=ls("why").map(cd).join("");
+const C=ls("cases");
+$("cases").innerHTML=C.map((c,i)=>`<a class="case" href="#case-${i+1}">${safeUrl(c.img)?`<div class="ph"><img src="${safeUrl(c.img)}" alt="" loading="lazy"></div>`:`<div class="ph">Screenshot 0${i+1}</div>`}<div class="ci"><span class="tag">0${i+1}</span><h3>${esc(c.n)}</h3><div class="rs">${bn(c.re,c.ra)}</div><span class="v">${bi("View case study →","شاهد دراسة الحالة ←")}</span></div></a>`).join("");
+const strip=(items,mk)=>{const one=items.map(mk),rep=Math.max(1,Math.ceil(8/one.length)),row=one.join("").repeat(rep);const row2=one.slice().reverse().join("").repeat(rep);return`<div class="tr">${row}${row}</div><div class="tr">${row2}${row2}</div>`};
+const sh=ls("showcase").map(x=>typeof x=="string"?x:x.img).filter(safeUrl);
+$("sc").innerHTML=sh.length?strip(sh,u=>`<div class="ph sh"><img src="${safeUrl(u)}" alt="" loading="lazy"></div>`):strip([1,2,3,4,5,6],i=>`<div class="ph">Screenshot 0${i}</div>`);
+const T=ls("testimonials");
+$("tm").innerHTML=T.length?strip(T,x=>safeUrl(x.img)?`<div class="ph sh"><img src="${safeUrl(x.img)}" alt="" loading="lazy"></div>`:`<q>${bn(x.qe,x.qa)}<b>${bn(x.ne,x.na)}</b></q>`):"";
+const soc=(Array.isArray(SET.social)?SET.social:[{n:"Facebook",u:SET.facebook},{n:"Instagram",u:SET.instagram}]).filter(s=>s&&s.v!==0&&s.v!==false&&safeUrl(s.u));
+$("soc").innerHTML=soc.map(s=>`<a class="btn" href="${safeUrl(s.u)}" target="_blank" rel="noopener">${esc(s.n)}</a>`).join("");
+buildLoop(ls("brands").filter(b=>b&&(b.n||safeUrl(b.img))))}
+function applyTexts(){const T=CT.texts||{};
+document.querySelectorAll("[data-k]").forEach(e=>{const v=T[e.dataset.k],s=v&&v[e.dataset.l];if(typeof s=="string"&&s.trim()!=="")e.innerHTML=nl(s)});
+document.querySelectorAll("[data-ks]").forEach(e=>{const v=T[e.dataset.ks];if(v&&typeof v.v=="string"&&v.v.trim()!=="")e.textContent=v.v})}
+function applyImages(){const I=CT.images||{};
+if(safeUrl(I.logo)){document.querySelectorAll("#ld img,nav>img").forEach(i=>i.src=I.logo);const ic=document.querySelector("link[rel=icon]");if(ic)ic.href=I.logo}
+if(safeUrl(I.me_white))document.querySelector(".me.w").src=I.me_white;
+if(safeUrl(I.me_dark))document.querySelector(".me.d").src=I.me_dark}
+function applyFonts(){const f=SET.fonts||{},fl=DEF.fontlist||{en:[],ar:[]},want=[];
+[["fhe","en_head","en"],["fbe","en_body","en"],["fha","ar_head","ar"],["fba","ar_body","ar"]].forEach(([v,k,l])=>{const n=String(f[k]||"").trim();if(!n||!/^[\w \-]{2,40}$/.test(n))return;const w=((fl[l]||[]).find(x=>x[0]==n)||[])[1];R.style.setProperty("--"+v,`"${n}",`+(l=="ar"?"Cairo,sans-serif":"sans-serif"));want.push("family="+n.replace(/ /g,"+")+(w?":wght@"+w:""))});
+if(want.length){const lk=document.createElement("link");lk.rel="stylesheet";lk.href="https://fonts.googleapis.com/css2?"+[...new Set(want)].join("&")+"&display=swap";document.head.appendChild(lk);document.fonts&&document.fonts.ready.then(()=>fit())}}
+async function boot(){
+if(LIVE){try{const r=await Promise.race([sb("p2_settings?key=in.(site,content)&select=key,value"),new Promise((_,j)=>setTimeout(j,3500))]);r.forEach(x=>{if(x.key=="site")SET=x.value||{};if(x.key=="content")CT=x.value||{}})}catch(e){}}
+if(SET.whatsapp)WA=String(SET.whatsapp).replace(/\D/g,"");
+if(+SET.logo_speed)window.LS=+SET.logo_speed;if(+SET.marquee_speed)R.style.setProperty("--mq",+SET.marquee_speed);
+if(SET.site_title)document.title=String(SET.site_title).slice(0,120);
+applyFonts();applyTexts();applyImages();renderLists();
+let l=null,t=null;try{l=localStorage.getItem("l");t=localStorage.getItem("t")}catch(e){}
+if(l!="ar"&&l!="en")l=SET.default_lang=="ar"?"ar":"en";if(t!="light"&&t!="dark")t=SET.default_theme=="dark"?"dark":"light";
+setLang(l=="ar",false);R.dataset.t=t=="light"?"light":"";
+fit();wl();route()}
+const T0=performance.now();boot().catch(()=>{}).finally(()=>setTimeout(()=>ld.classList.add("off"),Math.max(0,1500-(performance.now()-T0))));
 </script>
 </body>
 </html>
