@@ -1,7 +1,8 @@
 // يبعت إشعار تليجرام لما حد يحجز ميتينج أو يبعت بريف.
 // بيتأكد إن الحجز/البريف موجود فعلاً في قاعدة البيانات وإنه ماتبعتش قبل كده.
 const sendPush = require('./_push');
-const esc = s => String(s == null ? '' : s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+const wa = require('./_wa');
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 module.exports = async (req, res) => {
@@ -27,7 +28,9 @@ module.exports = async (req, res) => {
     if (type === 'booking') {
       const sl = await (await fetch(`${SUPABASE_URL}/rest/v1/p2_slots?id=eq.${row.slot_id}&select=starts_at`, { headers: H })).json();
       const when = sl[0] ? new Date(sl[0].starts_at).toLocaleString('ar-EG', { timeZone: 'Africa/Cairo', weekday: 'long', day: 'numeric', month: 'long', hour: 'numeric', minute: '2-digit' }) : '';
-      text = `📅 <b>حجز ميتينج جديد</b>\n\n🕒 ${esc(when)}\n👤 ${esc(row.name)}\n📞 ${esc(row.phone)}\n🏷 ${esc(row.activity)}`;
+      let tpl = ''; try { tpl = (((await (await fetch(`${SUPABASE_URL}/rest/v1/p2_settings?key=eq.site&select=value`, { headers: H })).json())[0] || {}).value || {}).wa_template; } catch (e) {}
+      const wl = wa.link(tpl, row, sl[0] && sl[0].starts_at);
+      text = `📅 <b>حجز ميتينج جديد</b>\n\n🕒 ${esc(when)}\n👤 ${esc(row.name)}\n📞 ${esc(row.phone)}\n🏷 ${esc(row.activity)}` + (wl ? `\n\n✅ <a href="${esc(wl)}">ابعت تأكيد للعميل على واتساب</a>` : '');
     } else {
       text = `📝 <b>بريف جديد وصل</b>\n\n👤 ${esc(row.client_name)}\n🏷 ${esc(row.brand_name)}\n📞 ${esc(row.phone)}` + (DASHBOARD_URL ? `\n\n🔗 ${esc(DASHBOARD_URL.replace(/\/$/, ''))}` : '');
     }

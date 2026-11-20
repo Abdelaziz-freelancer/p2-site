@@ -239,7 +239,7 @@ const tx=it.filter(x=>x.txt),W=tx.length?Math.max(...tx.map(x=>x.t.getComputedTe
 LOOP.last=performance.now();
 (function f(now){LOOP.raf=requestAnimationFrame(f);const dt=Math.max(0,Math.min(50,now-LOOP.last));LOOP.last=now;LOOP.off+=dt*.016*(window.LS||1);it.forEach(x=>{const u=((x.d+LOOP.off)%L)/L*N,k=Math.min(N-1,Math.floor(u)),r=u-k,a=P[k],b=P[k+1];x.t.setAttribute("transform",`translate(${(a.x+(b.x-a.x)*r).toFixed(2)} ${(a.y+(b.y-a.y)*r).toFixed(2)}) rotate(${A[k].toFixed(1)})`)})})(LOOP.last)}
 const $=id=>document.getElementById(id),CFG=window.P2_CONFIG||{},LIVE=!!(CFG.url&&CFG.key);let WA="201041249535";
-const wl=()=>document.querySelectorAll("[data-wa]").forEach(a=>{a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("أهلاً عبدالعزيز، عايز أتكلم معاك بخصوص إعلانات لبراندي.");a.target="_blank";a.rel="noopener"});
+const wl=()=>document.querySelectorAll("[data-wa]").forEach(a=>{a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("أهلاً عبدالعزيز، عايز أتكلم معاك بخصوص إعلانات لبراندي.");a.target="_blank";a.rel="noopener";a.onclick=()=>TR.ev("wa_click")});
 const sb=(p,o={})=>fetch(CFG.url+"/rest/v1/"+p,{...o,headers:{apikey:CFG.key,...(CFG.key.startsWith("sb_")?{}:{Authorization:"Bearer "+CFG.key}),"Content-Type":"application/json",...(o.headers||{})}}).then(async r=>{if(!r.ok)throw new Error(await r.text());return r.status==204?null:r.json()});
 const NOCFG=()=>{throw new Error("not configured")};
 const API={
@@ -248,27 +248,44 @@ async slots(){if(!LIVE)NOCFG();return sb("p2_open_slots?select=id,starts_at,dura
 async book(s,f){if(!LIVE)NOCFG();const r=await sb("rpc/p2_book_slot",{method:"POST",body:JSON.stringify({p_slot:s.id,p_name:f.name,p_phone:f.phone,p_activity:f.activity})});if(r&&r.ok)ping("booking",r.id);return r},
 async brief(b){if(!LIVE)NOCFG();const r=await sb("rpc/p2_submit_brief",{method:"POST",body:JSON.stringify({p_client:b.client_name,p_brand:b.brand_name,p_phone:b.phone,p_answers:b.answers})});if(!r||!r.ok)throw new Error("brief");ping("brief",r.id);return r}};
 const ping=(type,id)=>{try{fetch("/api/notify",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({type,id}),keepalive:true}).catch(()=>{})}catch(e){}};
+const PGT=n=>{const o=(CT.texts||{})["pages."+n]||{},d=(DEF.texts||{})["pages."+n]||{},g=l=>typeof o[l]=="string"&&o[l].trim()?o[l]:(d[l]||"");return{en:g("en"),ar:g("ar")}},pb=n=>{const p=PGT(n);return bi(nl(p.en),nl(p.ar))},pm=n=>PGT(n)[document.documentElement.lang=="ar"?"ar":"en"],pp=n=>{const p=PGT(n);return p.ar+" / "+p.en};
+const rnd=()=>(window.crypto&&crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2,14)).replace(/-/g,"");
+const stg=(w,k,v)=>{try{const s=window[w];if(v===undefined)return s.getItem(k);s.setItem(k,v)}catch(e){}return null};
+const VID=stg("localStorage","p2v")||(()=>{const v=rnd();stg("localStorage","p2v",v);return v})(),SID=stg("sessionStorage","p2s")||(()=>{const v=rnd();stg("sessionStorage","p2s",v);return v})();
+const SRC=(()=>{let o=null;try{o=JSON.parse(stg("sessionStorage","p2src")||"null")}catch(e){}if(o&&o.src)return o;
+const q=new URLSearchParams(location.search);let src=(q.get("utm_source")||"").toLowerCase().slice(0,40),cmp=(q.get("utm_campaign")||"").slice(0,80),h="";
+try{h=document.referrer?new URL(document.referrer).hostname.replace(/^www\./,""):""}catch(e){}
+if(h===location.hostname)h="";
+if(!src){if(q.get("fbclid"))src="facebook";else if(q.get("ttclid"))src="tiktok";else if(q.get("gclid"))src="google";else if(h){const m=[["facebook","facebook"],["fb.com","facebook"],["instagram","instagram"],["tiktok","tiktok"],["google","google"],["youtube","youtube"],["t.co","twitter"],["twitter","twitter"],["linkedin","linkedin"],["wa.me","whatsapp"],["whatsapp","whatsapp"],["t.me","telegram"]].find(x=>h.includes(x[0]));src=m?m[1]:h.slice(0,40)}else src="direct"}
+o={src,cmp,ref:h.slice(0,120)};stg("sessionStorage","p2src",JSON.stringify(o));return o})();
+const PXT={case_view:"ViewContent",book_done:"SubmitForm",brief_done:"CompleteRegistration",wa_click:"Contact"},PXM={case_view:"ViewContent",book_done:"Schedule",brief_done:"Lead",wa_click:"Contact"};
+function px(t){try{if(window.fbq&&PXM[t])fbq("track",PXM[t]);if(window.ttq&&PXT[t])ttq.track(PXT[t])}catch(e){}}
+const TR={ev(t){if(LIVE)sb("rpc/p2_track",{method:"POST",keepalive:true,body:JSON.stringify({p_vid:VID,p_sid:SID,p_type:t,p_src:SRC.src,p_cmp:SRC.cmp,p_ref:SRC.ref})}).catch(()=>{});px(t)}};
+function initPixels(){const m=String(SET.meta_pixel||"").replace(/\D/g,""),t=String(SET.tiktok_pixel||"").replace(/[^A-Za-z0-9]/g,"");
+if(m.length>=8&&m.length<=20){(function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init",m);fbq("track","PageView")}
+if(t.length>=8&&t.length<=30){(function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load(t);ttq.page()})(window,document,"ttq")}}
 const fd=(i,l)=>new Date(i).toLocaleDateString(l,{weekday:"long",day:"numeric",month:"long",timeZone:"Africa/Cairo"}),ft=(i,l)=>new Date(i).toLocaleTimeString(l,{hour:"numeric",minute:"2-digit",timeZone:"Africa/Cairo"}),dk=i=>new Date(i).toLocaleDateString("en-CA",{timeZone:"Africa/Cairo"}),bd=i=>bi(fd(i,"en-GB"),fd(i,"ar-EG")),bt=i=>bi(ft(i,"en-US"),ft(i,"ar-EG"));
-const BK=(h)=>`<a class="pill" href="#${h}" style="text-decoration:none;display:inline-block">${bi("← Back","رجوع →")}</a>`;
+const BK=(h)=>`<a class="pill" href="#${h}" style="text-decoration:none;display:inline-block">${pb(30)}</a>`;
 async function bookV(v){
-v.innerHTML=`<div class="csi">${BK("meeting")}<span class="tag" style="margin-top:34px">${bi("Book a Meeting","احجز ميتينج")}</span><h2>${bi("How would you like to meet?","تحب نتقابل إزاي؟")}</h2><div class="opt"><a class="oc" href="#book-site" id="os"><b>${bi("Book from the website","احجز من الموقع")}</b><span>${bi("Pick a free time below and confirm in seconds.","اختار ميعاد فاضي من تحت وأكّد الحجز في ثواني.")}</span></a><a class="oc" data-wa href="#"><b>${bi("Chat on WhatsApp","كلمني على واتساب")}</b><span>${bi("Message me directly and we'll agree on a time.","ابعتلي رسالة ونتفق على الميعاد.")}</span></a></div><h3 class="dd" id="pick">${bi("Pick a time that suits you (Cairo time)","اختار الميعاد المناسب ليك (بتوقيت القاهرة)")}</h3><div id="sl">${bi("Loading…","جاري تحميل المواعيد…")}</div><div id="bf"></div></div>`;wl();$("os").onclick=e=>{e.preventDefault();$("pick").scrollIntoView({behavior:"smooth"})};
+TR.ev("book_open");
+v.innerHTML=`<div class="csi">${BK("meeting")}<span class="tag" style="margin-top:34px">${pb(1)}</span><h2>${pb(2)}</h2><div class="opt"><a class="oc" href="#book-site" id="os"><b>${pb(3)}</b><span>${pb(4)}</span></a><a class="oc" data-wa href="#"><b>${pb(5)}</b><span>${pb(6)}</span></a></div><h3 class="dd" id="pick">${pb(7)}</h3><div id="sl">${pb(22)}</div><div id="bf"></div></div>`;wl();$("os").onclick=e=>{e.preventDefault();$("pick").scrollIntoView({behavior:"smooth"})};
 let S=[],fail=0;try{S=await API.slots()}catch(e){fail=1}
 const sl=$("sl");if(!sl)return;
-if(fail){sl.innerHTML=`<p class="er">${bi("Could not load times. Please try again or use WhatsApp.","مقدرناش نحمّل المواعيد. جرّب تاني أو كلمني على واتساب.")}</p>`;return}
-if(!S.length){sl.innerHTML=`<p class="lead" style="margin-top:24px">${bi("No open slots right now. Please message me on WhatsApp.","مفيش مواعيد متاحة دلوقتي. كلمني على واتساب.")}</p>`;return}
+if(fail){sl.innerHTML=`<p class="er">${pb(18)}</p>`;return}
+if(!S.length){sl.innerHTML=`<p class="lead" style="margin-top:24px">${pb(17)}</p>`;return}
 const G={};S.forEach(s=>(G[dk(s.starts_at)]=G[dk(s.starts_at)]||[]).push(s));
 sl.innerHTML=Object.values(G).map(a=>`<h3 class="dd">${bd(a[0].starts_at)}</h3>${a.map(s=>`<button class="slot" data-i="${s.id}">${bt(s.starts_at)}</button>`).join("")}`).join("");
-sl.querySelectorAll(".slot").forEach(b=>b.onclick=()=>{sl.querySelectorAll(".slot").forEach(x=>x.classList.remove("on"));b.classList.add("on");const s=S.find(x=>x.id==b.dataset.i);
-$("bf").innerHTML=`<h3 class="dd">${bi("Your details","بياناتك")}</h3><div class="fl"><input type="text" id="bn" placeholder="الاسم / Name"></div><div class="fl"><input type="tel" id="bp" placeholder="رقم التليفون / Phone"></div><div class="fl"><input type="text" id="ba" placeholder="نشاط البراند / Brand activity"></div><div class="er" id="be2"></div><button class="btn fill" id="bc" style="cursor:pointer">${bi("Confirm booking","تأكيد الحجز")} — ${bd(s.starts_at)} ${bt(s.starts_at)}</button>`;
+sl.querySelectorAll(".slot").forEach(b=>b.onclick=()=>{sl.querySelectorAll(".slot").forEach(x=>x.classList.remove("on"));b.classList.add("on");TR.ev("slot_pick");const s=S.find(x=>x.id==b.dataset.i);
+$("bf").innerHTML=`<h3 class="dd">${pb(8)}</h3><div class="fl"><input type="text" id="bn" placeholder="${esc(pp(9))}"></div><div class="fl"><input type="tel" id="bp" placeholder="${esc(pp(10))}"></div><div class="fl"><input type="text" id="ba" placeholder="${esc(pp(11))}"></div><div class="er" id="be2"></div><button class="btn fill" id="bc" style="cursor:pointer">${pb(12)} — ${bd(s.starts_at)} ${bt(s.starts_at)}</button>`;
 $("bc").onclick=async()=>{const n=$("bn").value.trim(),p=$("bp").value.trim(),a=$("ba").value.trim(),e=$("be2"),c=$("bc");
-if(n.length<2||p.replace(/\D/g,"").length<8||!a){e.textContent="اكتب الاسم ورقم التليفون ونشاط البراند — Please fill all fields";return}
+if(n.length<2||p.replace(/\D/g,"").length<8||!a){e.textContent=pm(19);return}
 c.disabled=1;try{const r=await API.book(s,{name:n,phone:p,activity:a});
-if(r&&r.ok){v.innerHTML=`<div class="csi"><h2>${bi("Booked ✓","تم تأكيد الحجز ✓")}</h2><p class="lead">${bd(s.starts_at)} — ${bt(s.starts_at)}<br>${bi("I'll contact you on the number you entered.","هتواصل معاك على الرقم اللي كتبته.")}</p><p style="margin-top:20px"><a class="btn fill" href="#home">${bi("Back to site","الرجوع للموقع")}</a><a class="btn" data-wa href="#">WhatsApp</a></p></div>`;wl()}
-else{await bookV(v);$("sl").insertAdjacentHTML("afterbegin","<p class='er'>الميعاد ده اتحجز، اختار ميعاد تاني — That slot was just taken.</p>")}}
-catch(x){e.textContent="حصلت مشكلة، جرّب تاني — Something went wrong.";c.disabled=0}}})}
+if(r&&r.ok){TR.ev("book_done");v.innerHTML=`<div class="csi"><h2>${pb(13)}</h2><p class="lead">${bd(s.starts_at)} — ${bt(s.starts_at)}<br>${pb(14)}</p><p style="margin-top:20px"><a class="btn fill" href="#home">${pb(15)}</a><a class="btn" data-wa href="#">${pb(16)}</a></p></div>`;wl()}
+else{await bookV(v);$("sl").insertAdjacentHTML("afterbegin","<p class='er'>"+esc(pm(20))+"</p>")}}
+catch(x){e.textContent=pm(21);c.disabled=0}}})}
 const q1=s=>document.querySelector(s);
 const BRF=()=>(CT.brief&&Array.isArray(CT.brief.sections)&&CT.brief.sections.length)?CT.brief:DEF.brief;
-function fh(f){const n="b_"+f.id,rq=f.req?'<span class="rq">مطلوب</span>':"",ph=esc(f.ph||""),t=f.type;let h="";
+function fh(f){const n="b_"+f.id,rq=f.req?`<span class="rq">${esc(pm(29))}</span>`:"",ph=esc(f.ph||""),t=f.type;let h="";
 if(t=="text"||t=="tel"||t=="email")h=`<input type="${t=="text"?"text":t}" id="${n}" placeholder="${ph}">`;
 else if(t=="textarea")h=`<textarea id="${n}" placeholder="${ph}"></textarea>`;
 else if(t=="radio"||t=="check")h=`<div class="op">${(f.opts||[]).map(x=>`<label><input type="${t=="radio"?"radio":"checkbox"}" name="${n}" value="${esc(x)}">${esc(x)}</label>`).join("")}</div>`;
@@ -281,17 +298,17 @@ if(t=="check")return[...document.querySelectorAll(`input[name="${n}"]:checked`)]
 if(t=="list")return Array.from({length:Math.min(10,f.n||3)},(_,i)=>q1("#"+n+"_"+i).value.trim()).filter(Boolean).join("\n");
 if(t=="grid"){const cs=(f.cols||[]);return(f.rows||[]).map((r,i)=>{const c=cs.map((_,j)=>q1("#"+n+"_"+i+"_"+j).value.trim());return c.some(Boolean)?r+": "+c.map(x=>x||"-").join(" | "):""}).filter(Boolean).join("\n")}
 return q1("#"+n).value.trim()}
-function briefV(v){const B=BRF();v.innerHTML=`<div class="csi rtlx bfw">${BK("meeting")}<h2 style="margin-top:34px">${esc(B.title||"بريف العميل")}</h2><p class="lead">${nl(B.intro||"")}</p>${B.sections.map((s,i)=>`<div class="sec"><div class="sh"><span class="nb">${i+1}</span><div><h3>${esc(s.t)}</h3><p>${esc(s.s||"")}</p></div></div>${s.note?`<div class="nt ${s.nt=="am"?"am":"pk"}">${s.nl?`<b>${esc(s.nl)}</b> `:""}${nl(s.note)}</div>`:""}${(s.fields||[]).map(fh).join("")}</div>`).join("")}<div id="be" class="er"></div><button class="btn fill" id="bs" style="font:600 16px var(--fba);cursor:pointer">${esc(B.submit||"إرسال البريف")}</button></div>`;$("bs").onclick=sendBrief}
+function briefV(v){TR.ev("brief_open");const B=BRF();v.innerHTML=`<div class="csi rtlx bfw">${BK("meeting")}<h2 style="margin-top:34px">${esc(B.title||"بريف العميل")}</h2><p class="lead">${nl(B.intro||"")}</p>${B.sections.map((s,i)=>`<div class="sec"><div class="sh"><span class="nb">${i+1}</span><div><h3>${esc(s.t)}</h3><p>${esc(s.s||"")}</p></div></div>${s.note?`<div class="nt ${s.nt=="am"?"am":"pk"}">${s.nl?`<b>${esc(s.nl)}</b> `:""}${nl(s.note)}</div>`:""}${(s.fields||[]).map(fh).join("")}</div>`).join("")}<div id="be" class="er"></div><button class="btn fill" id="bs" style="font:600 16px var(--fba);cursor:pointer">${esc(B.submit||"إرسال البريف")}</button></div>`;$("bs").onclick=sendBrief}
 async function sendBrief(){const e=$("be"),b=$("bs"),a=[],bad=[],by={},B=BRF();
 B.sections.forEach(s=>(s.fields||[]).forEach(f=>{const x=fv(f);by[f.id]=x;if(f.req&&!x)bad.push(f.l);if(x)a.push({s:s.t,q:f.l,a:x})}));
-if(bad.length){e.textContent="لازم تملأ: "+bad.join(" — ");return}
-if(!a.length){e.textContent="املأ البيانات الأول";return}
-b.disabled=1;b.textContent="جاري الإرسال...";
+if(bad.length){e.textContent=pm(23)+" "+bad.join(" — ");return}
+if(!a.length){e.textContent=pm(24);return}
+b.disabled=1;b.textContent=pm(25);
 try{await API.brief({client_name:by.name||"",brand_name:by.brand||"",phone:by.phone||"",answers:a});
-$("csv").innerHTML=`<div class="csi rtlx bfw"><h2>تم إرسال البريف ✓</h2><p class="lead">شكراً ليك! هنراجع البيانات ونتواصل معاك قريباً.</p><p style="margin-top:20px"><a class="btn fill" href="#home">الرجوع للموقع</a><a class="btn" data-wa href="#">كلمني على واتساب</a></p></div>`;wl()}
-catch(x){e.textContent="حصلت مشكلة في الإرسال، جرّب تاني أو كلمني على واتساب.";b.disabled=0;b.textContent=B.submit||"إرسال البريف"}}
-function caseV(v,c){const img=u=>safeUrl(u)?`<img src="${safeUrl(u)}" alt="" loading="lazy">`:"";
-v.innerHTML=`<div class="csi"><a class="pill" href="#results" style="text-decoration:none;display:inline-block">${bi("← Back","رجوع →")}</a><span class="tag" style="margin-top:34px">${bi("Case Study","دراسة حالة")}</span><h2>${esc(c.n)}</h2><div class="rs">${bn(c.re,c.ra)}</div>${img(c.img)?`<div class="ph">${img(c.img)}</div>`:`<div class="ph">Campaign screenshot</div>`}${(c.shots&&c.shots.length)?`<div class="gal">${c.shots.map(img).join("")}</div>`:""}${(c.sec||[]).map((s,i)=>`<div class="step"><b>0${i+1}</b><div><h3 style="font-size:22px;margin-bottom:6px">${bn(s.te,s.ta)}</h3><p>${bn(s.de,s.da)}</p>${safeUrl(s.img)?`<img class="sim" src="${safeUrl(s.img)}" alt="" loading="lazy">`:""}</div></div>`).join("")}</div>`}
+TR.ev("brief_done");$("csv").innerHTML=`<div class="csi bfw"><h2>${pb(26)}</h2><p class="lead">${pb(27)}</p><p style="margin-top:20px"><a class="btn fill" href="#home">${pb(15)}</a><a class="btn" data-wa href="#">${pb(5)}</a></p></div>`;wl()}
+catch(x){e.textContent=pm(28);b.disabled=0;b.textContent=B.submit||"إرسال البريف"}}
+function caseV(v,c){TR.ev("case_view");const img=u=>safeUrl(u)?`<img src="${safeUrl(u)}" alt="" loading="lazy">`:"";
+v.innerHTML=`<div class="csi"><a class="pill" href="#results" style="text-decoration:none;display:inline-block">${pb(30)}</a><span class="tag" style="margin-top:34px">${bi("Case Study","دراسة حالة")}</span><h2>${esc(c.n)}</h2><div class="rs">${bn(c.re,c.ra)}</div>${img(c.img)?`<div class="ph">${img(c.img)}</div>`:`<div class="ph">Campaign screenshot</div>`}${(c.shots&&c.shots.length)?`<div class="gal">${c.shots.map(img).join("")}</div>`:""}${(c.sec||[]).map((s,i)=>`<div class="step"><b>0${i+1}</b><div><h3 style="font-size:22px;margin-bottom:6px">${bn(s.te,s.ta)}</h3><p>${bn(s.de,s.da)}</p>${safeUrl(s.img)?`<img class="sim" src="${safeUrl(s.img)}" alt="" loading="lazy">`:""}</div></div>`).join("")}</div>`}
 function route(){const h=location.hash,v=$("csv"),m=/^#case-(\d+)$/.exec(h),C=ls("cases");
 if(h=="#book"||h=="#brief"||(m&&C[m[1]-1])){document.body.style.overflow="hidden";v.classList.add("on");h=="#book"?bookV(v):h=="#brief"?briefV(v):caseV(v,C[m[1]-1]);v.scrollTop=0}else{v.classList.remove("on");document.body.style.overflow=""}}
 addEventListener("hashchange",route);route();wl();
@@ -338,7 +355,7 @@ if(LIVE){try{const r=await Promise.race([sb("p2_settings?key=in.(site,content)&s
 if(SET.whatsapp)WA=String(SET.whatsapp).replace(/\D/g,"");
 if(+SET.logo_speed)window.LS=+SET.logo_speed;if(+SET.marquee_speed)R.style.setProperty("--mq",+SET.marquee_speed);
 if(SET.site_title)document.title=String(SET.site_title).slice(0,120);
-applyFonts();applyTexts();applyImages();renderLists();
+applyFonts();applyTexts();applyImages();renderLists();initPixels();TR.ev("pv");
 let l=null,t=null;try{l=localStorage.getItem("l");t=localStorage.getItem("t")}catch(e){}
 if(l!="ar"&&l!="en")l=SET.default_lang=="ar"?"ar":"en";if(t!="light"&&t!="dark")t=SET.default_theme=="dark"?"dark":"light";
 setLang(l=="ar",false);R.dataset.t=t=="light"?"light":"";
