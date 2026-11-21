@@ -1,0 +1,11 @@
+{
+  "functions": { "api/index.js": { "includeFiles": "index.html" } },
+  "routes": [
+    { "src": "/", "dest": "/api/index" },
+    { "src": "/index.html", "dest": "/api/index" },
+    { "src": "/blog/([0-9]+)/?", "dest": "/api/index?post=$1" },
+    { "src": "/sitemap.xml", "dest": "/api/sitemap" },
+    { "src": "/robots.txt", "dest": "/api/sitemap?robots=1" },
+    { "handle": "filesystem" }
+  ]
+}
